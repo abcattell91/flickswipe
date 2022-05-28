@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_28_135052) do
+ActiveRecord::Schema.define(version: 2022_05_28_142014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2022_05_28_135052) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["contact_id"], name: "index_friendships_on_contact_id"
     t.index ["initiator_id"], name: "index_friendships_on_initiator_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "friendship_id", null: false
+    t.bigint "content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_matches_on_content_id"
+    t.index ["friendship_id"], name: "index_matches_on_friendship_id"
   end
 
   create_table "user_contents", force: :cascade do |t|
@@ -63,6 +72,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_135052) do
 
   add_foreign_key "friendships", "users", column: "contact_id"
   add_foreign_key "friendships", "users", column: "initiator_id"
+  add_foreign_key "matches", "contents"
+  add_foreign_key "matches", "friendships"
   add_foreign_key "user_contents", "contents"
   add_foreign_key "user_contents", "users"
 end
