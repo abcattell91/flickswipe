@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :friendships, only: [:index]
   resources :contents, only: [:index]
   resources :matches, only: [:show]
+
 end
