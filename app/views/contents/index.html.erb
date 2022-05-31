@@ -3,9 +3,17 @@
       <li class="slide <%= 'showing' if i == 0 %>" data-id="<%= content.id %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
+        <div class="content-details">
+        <hr>
+        <br>
+        <p >Average rating: <%= content.rating %></p>
+        <p><%= content.description %></p>
+
+      </div>
       </li>
     <% end %>
     </ul>
+
 
 
   <div id="slide-controls">
