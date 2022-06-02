@@ -1,19 +1,21 @@
     <ul id="slides">
       <% @contents.each_with_index do |content, i| %>
-      <li class="slide <%= 'showing' if i == 0 %>" data-id="<%= content.id %>">
+      <li class="slide <%= 'active' if i == 0 %>" data-id="<%= content.id %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
-        <div class="content-details">
-        <hr>
-        <br>
-        <p >Average rating: <%= content.rating %></p>
-        <p><%= content.description %></p>
+        <button class="modal-btn">Open Modal</button>
+          <div id="movie-modal" class="movie-modal">
+            <div class="movie-modal-header">
+              <div class="movie-rating" style="">Average rating: <strong><%= content.rating %></strong></div>
+              <button class="close-button">&times;</button>
+            </div>
+            <div class="movie-modal-body"><p><%= content.description %></p></div>
+          </div>
 
-      </div>
+          <div id="overlay"></div>
       </li>
-    <% end %>
+      <% end %>
     </ul>
-
 
 
   <div id="slide-controls">

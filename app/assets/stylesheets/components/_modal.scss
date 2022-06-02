@@ -1,0 +1,60 @@
+.movie-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 300px;
+  max-width: 80%;
+  color: black;
+}
+.movie-modal.active{
+  transform: translate(-50%, -50%) scale(1);
+}
+.movie-modal-header {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+.movie-rating {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.movie-modal-body {
+  padding: 16px;
+  color: rgb(160, 160, 160);
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

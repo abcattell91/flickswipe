@@ -16,3 +16,4 @@ import "controllers"
 import "bootstrap"
 
 require('../includes/slides')
+require('../includes/modal')
