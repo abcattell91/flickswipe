@@ -1,4 +1,5 @@
     <ul id="slides">
+    <%# shuffle gives a random order %>
       <% @contents.shuffle.each_with_index do |content, i| %>
       <li class="slide <%= 'active' if i == 0 %>" data-id="<%= content.id %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
