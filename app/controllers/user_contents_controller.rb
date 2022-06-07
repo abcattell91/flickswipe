@@ -10,6 +10,13 @@ class UserContentsController < ApplicationController
     user_content.user = current_user
     user_content.content = @content
     @user_content.save
+
+    friendship = Friendship.find(params[:friendship_id])
+    friend = friendship.contact == current_user ? friendship.initiator : friendship.contact
+    other_friends_user_content = UserContent.where(user: friend, content: content).first
+    if other_friends_user_content
+      @match = Match.create(friendship: friendship, content: content)
+    end
   end
 
   private
