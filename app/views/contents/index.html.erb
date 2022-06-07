@@ -4,7 +4,7 @@
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
         <button class="modal-btn">Open Modal</button>
-          <div id="movie-modal" class="movie-modal">
+          <div class="movie-modal <%= content.id %>">
             <div class="movie-modal-header">
               <div class="movie-rating" style="">Average rating: <strong><%= content.rating %></strong></div>
               <button class="close-button">&times;</button>
@@ -12,7 +12,7 @@
             <div class="movie-modal-body"><p><%= content.description %></p></div>
           </div>
 
-          <div id="overlay"></div>
+          <div class="overlay <%= content.id %>"></div>
       </li>
       <% end %>
     </ul>
