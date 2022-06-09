@@ -1,13 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 puts 'cleaning up database'
 Content.destroy_all
 puts 'database is clean'
+
+# The movie api is different to tv shows so have to do the api request twice. The commented out section is for when we have a match.
+# The ID of that movie/show will then be used in that api request to give the correct information onwhere to watch
 
 movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=bee3f4d040e52ad1c0e3eac80d78e941&language=en-US'
 2.times do |m|
@@ -42,6 +38,7 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key=bee3f4d040e52ad1
   end
 end
 
+# Below is what I referred to above.
 # if @content.content_type = "movie"
 #   JSON.parse(URI.open("https://api.themoviedb.org/3/movie/#{@content.imdb_id}/watch/providers?api_key=bee3f4d040e52ad1c0e3eac80d78e941&language=en-US&watch_region=GB").read['results', 'GB', 'flatrate'])
 # else
