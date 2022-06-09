@@ -1,39 +1,3 @@
-$(function(){
-  var $activeSlide = $('#slides .slide:first-child');
-
-  // show first slide
-  $activeSlide.addClass("active");
-  // on click the next slide is shown and console logged decline
-  $("#decline").on("click", function(){
-    goToSlide('decline');
-  });
-  // on click the content id is taken then we need to use that in the user_contents to add the the users 'liked' list maybe?
-  $("#approve").on("click", function(){
-    var content_id = $activeSlide.data("id");
-    console.log(content_id)
-    goToSlide('approve');
-    // $.ajax({
-    //   url: "/user_contents/liked" + content_id,
-    //   method: "post",
-    //   dataType: "ajax"
-    // });
-  });
-    // adding the 'showing' or 'active' slide class to each element
-  function goToSlide(action) {
-    $activeSlide.removeClass("active");
-    $activeSlide = $activeSlide.next(".slide");
-
-    // send data to controller
-    if(action == "approve"){
-      console.log(action);
-    } else {
-      console.log('dislike');
-    }
-    $activeSlide.addClass("active");
-  }
-
-});
-
 // Below was all my testing trying to rewrite the above code. It failed.
 
 // const carouselSlide = document.querySelector(".carousel-slide");
@@ -98,3 +62,49 @@ $(function(){
 //     } else {
 //       console.log('dislike');
 //     }
+
+
+$(function(){
+  var $activeSlide = $('#slides .slide:first-child');
+
+  // show first slide
+  $activeSlide.addClass("active");
+  // on click event decline
+  $("#decline").on("click", function(){
+    var content_id = $activeSlide.data("id");
+    goToSlide('decline', content_id);
+  });
+  // on click approve then what?
+  $("#approve").on("click", function(){
+    var content_id = $activeSlide.data("id");
+    // console.log("content_id")
+    // console.log(content_id)
+    goToSlide('approve', content_id);
+    // $.ajax({
+    //   url: "/user_contents/liked" + content_id,
+    //   method: "post",
+    //   dataType: "ajax"
+    // });
+  });
+    // adding the 'showing' or 'active' slide class to each element
+  function goToSlide(action, content_id) {
+    $activeSlide.removeClass("active");
+    $activeSlide = $activeSlide.next(".slide");
+    url = `/contents/${content_id}/user_contents`;
+    // send data to controller
+    // if(action == "approve"){
+    //   console.log(action);
+    // } else {
+    //   console.log('dislike');
+    // }
+    let data = {liked: action};
+    fetch(url, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+    $activeSlide.addClass("active");
+  }
+});
