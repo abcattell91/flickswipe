@@ -1,10 +1,9 @@
     <ul id="slides">
-    <%# shuffle gives a random order %>
-      <% @contents.shuffle.each_with_index do |content, i| %>
+      <% @contents.each_with_index do |content, i| %>
       <li class="slide <%= 'active' if i == 0 %>" data-id="<%= content.id %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
-        <button class="modal-btn">Open Modal</button>
+        <button class="modal-btn"><i class='fas fa-info-circle fa-3x'></i></button>
           <div class="movie-modal <%= content.id %>">
             <div class="movie-modal-header">
               <div class="movie-rating" style="">Average rating: <strong><%= content.rating %></strong></div>
@@ -12,7 +11,6 @@
             </div>
             <div class="movie-modal-body"><p><%= content.description %></p></div>
           </div>
-
           <div class="overlay <%= content.id %>"></div>
       </li>
       <% end %>
