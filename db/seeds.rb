@@ -37,6 +37,11 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
   end
 end
 
+sleep 2
+puts "STARTING TV SHOWS....."
+sleep 2
+
+
 tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']+'&language=en-US'
 2.times do |m|
   contents = JSON.parse(URI.open("#{tv_url}&page=#{m + 1}").read)['results']
