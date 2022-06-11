@@ -14,14 +14,17 @@ Rails.application.routes.draw do
   #   resources :user_contents, only: [ :create ]
   # end
 
-  # resources :matches, only: [:show]
-
-
- # routes 2.0
- resources :friendships, only: [:index,:create] do
-  resources :contents, only: [:index] do
-    resources :user_contents, only: [:create]
+  # routes 2.0
+  resources :users do
+    resources :friendships, only: [:index] do
+      resources :contents, only: [:index] do
+        resources :user_contents, only: [:create]
+      end
+    end
   end
-end
-resources :matches, only: [:show]
+  # resources :matches, only: [:index, :show]
+
+  # user_contents does not need to be nested within friendships
+  # only need content_id to create user_content
+
 end
