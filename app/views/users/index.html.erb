@@ -1,0 +1,12 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+    <li> <%= user.first_name %></li>
+      <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
+     <%= link_to "Friends", friendships_path(contact_id: user.id, initiator_id: @user.id) , class: "btn btn-sm btn-success", method: :post %>
+     <% else %>
+    <%= link_to "Add friend", friendships_path(contact_id: user.id, initiator_id: @user.id) , class: "btn btn-sm btn-success", method: :post %>
+    <% end %>
+    <% end %>
+  </ol>
+<%= link_to 'Friendships', friendships_path  %>

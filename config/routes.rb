@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_prefix => 'd'
+    resources :users, :only =>[:show, :index]
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   # resources :friendships, only: [:index]
   # resources :contents, only: [:index] do
   #   # contents to be nested in friendships?
@@ -17,10 +18,10 @@ Rails.application.routes.draw do
 
 
  # routes 2.0
-  resources :friendships, only: [:index] do
-    resources :contents, only: [:index] do
-      resources :user_contents, only: [:create]
-    end
+ resources :friendships, only: [:index,:create] do
+  resources :contents, only: [:index] do
+    resources :user_contents, only: [:create]
   end
-  resources :matches, only: [:show]
+end
+resources :matches, only: [:show]
 end
