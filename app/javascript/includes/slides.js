@@ -91,7 +91,9 @@ $(function(){
   function goToSlide(action, content_id) {
     $activeSlide.removeClass("active");
     $activeSlide = $activeSlide.next(".slide");
-    url = `/contents/${content_id}/user_contents`;
+    const friendship_id = document.getElementById('users-ids').dataset['friendshipUserId'];
+    const current_user_id = document.getElementById('users-ids').dataset['currentUserId'];
+    const url = `/users/${current_user_id}/friendships/${friendship_id}/contents/${content_id}/user_contents`;
     // send data to controller
     // if(action == "approve"){
     //   console.log(action);
