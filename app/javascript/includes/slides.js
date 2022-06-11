@@ -107,6 +107,7 @@ const createUserContent = ((contentId, action) => {
 const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
   url = `/contact_contents/${contactId}`;
 
+
   fetch(url)
   .then(response => response.json())
   .then((data) => {
