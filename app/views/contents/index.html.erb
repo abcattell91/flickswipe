@@ -1,6 +1,6 @@
     <ul id="slides">
       <% @contents.shuffle.each_with_index do |content, i| %>
-      <li class="slide <%= 'active' if i == 0 %>" data-id="<%= content.id %>">
+      <li class="slide" data-id="<%= content.id %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
         <button class="modal-btn"><i class='fas fa-info-circle fa-3x'></i></button>
@@ -21,4 +21,4 @@
     <span id="approve"><i class="fa fa-solid fa-thumbs-up fa-2x"></i></span>
   </div>
 
-  <div id="users-ids" data-current-user-id="<%= current_user.id %>" data-friendship-user-id="<%=@friendship_id %>">
+  <div id="users-ids" data-current-user-id="<%= current_user.id %>" data-friendship-user-id="<%=@friendship_id %>" data-contact-id="<%= @contact_id %>">
