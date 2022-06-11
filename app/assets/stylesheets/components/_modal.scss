@@ -42,7 +42,7 @@
   color: rgb(160, 160, 160);
 }
 
-#overlay {
+.overlay {
   position: fixed;
   opacity: 0;
   top: 0;
@@ -54,7 +54,19 @@
   transition: 200ms ease-in-out;
 }
 
-#overlay.active {
+.overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.modal-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  z-index: 10;
+  color: #ffffffba;
+  top: 0%;
+  padding: 8px;
 }

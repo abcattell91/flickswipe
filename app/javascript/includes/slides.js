@@ -1,3 +1,5 @@
+// Below was all my testing trying to rewrite the above code. It failed.
+
 // const carouselSlide = document.querySelector(".carousel-slide");
 // const carouselImages = document.querySelectorAll('.carousel-slide img')
 
@@ -60,6 +62,7 @@
 //     } else {
 //       console.log('dislike');
 //     }
+// adasd
 
 
 $(function(){
@@ -69,13 +72,15 @@ $(function(){
   $activeSlide.addClass("active");
   // on click event decline
   $("#decline").on("click", function(){
-    goToSlide('decline');
+    var content_id = $activeSlide.data("id");
+    goToSlide('decline', content_id);
   });
   // on click approve then what?
   $("#approve").on("click", function(){
     var content_id = $activeSlide.data("id");
-    console.log(content_id)
-    goToSlide('approve');
+    // console.log("content_id")
+    // console.log(content_id)
+    goToSlide('approve', content_id);
     // $.ajax({
     //   url: "/user_contents/liked" + content_id,
     //   method: "post",
@@ -83,17 +88,24 @@ $(function(){
     // });
   });
     // adding the 'showing' or 'active' slide class to each element
-  function goToSlide(action) {
+  function goToSlide(action, content_id) {
     $activeSlide.removeClass("active");
     $activeSlide = $activeSlide.next(".slide");
-
+    url = `/contents/${content_id}/user_contents`;
     // send data to controller
-    if(action == "approve"){
-      console.log(action);
-    } else {
-      console.log('dislike');
-    }
+    // if(action == "approve"){
+    //   console.log(action);
+    // } else {
+    //   console.log('dislike');
+    // }
+    let data = {liked: action};
+    fetch(url, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
     $activeSlide.addClass("active");
   }
-
 });
