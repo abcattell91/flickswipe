@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users, :path_prefix => 'd'
-    resources :users, :only =>[:show, :index]
-  root to: 'pages#home'
 
   # resources :friendships, only: [:index]
   # resources :contents, only: [:index] do
@@ -13,10 +10,10 @@ Rails.application.routes.draw do
   #   # if they have we create the match
   #   resources :user_contents, only: [ :create ]
   # end
-
-  # routes 2.0
-  resources :users do
-    resources :friendships, only: [:index] do
+  root to: 'pages#home'
+  devise_for :users, :path_prefix => 'd'
+   resources :users, :only =>[:show, :index] do
+    resources :friendships, only: [:index, :create] do
       resources :contents, only: [:index] do
         resources :user_contents, only: [:create]
       end
