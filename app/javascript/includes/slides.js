@@ -65,49 +65,70 @@
 // adasd
 
 
-$(function(){
-  var $activeSlide = $('#slides .slide:first-child');
 
-  // show first slide
-  $activeSlide.addClass("active");
-  // on click event decline
-  $("#decline").on("click", function(){
-    var content_id = $activeSlide.data("id");
-    goToSlide('decline', content_id);
-  });
+const activeSlide = document.querySelector('.slide');
+// show first slide
+activeSlide.classList.add("active-slide");
+
+// on click event decline
+document.getElementById('decline').addEventListener('click', (event) => {
+  const activeSlide = document.querySelector('.active-slide');
+  const contentId = activeSlide.dataset["id"];
+  const contactId = document.getElementById('users-ids').dataset['contactId'];
+  createUserContent(contentId, 'decline');
+  checkIfMatch(contentId, contactId, activeSlide, 'decline');
+});
+
   // on click approve then what?
-  $("#approve").on("click", function(){
-    var content_id = $activeSlide.data("id");
-    // console.log("content_id")
-    // console.log(content_id)
-    goToSlide('approve', content_id);
-    // $.ajax({
-    //   url: "/user_contents/liked" + content_id,
-    //   method: "post",
-    //   dataType: "ajax"
-    // });
+document.getElementById('approve').addEventListener('click', (event) => {
+  const activeSlide = document.querySelector('.active-slide');
+  const contentId = activeSlide.dataset["id"];
+  const contactId = document.getElementById('users-ids').dataset['contactId'];
+  createUserContent(contentId, 'approve');
+  checkIfMatch(contentId, contactId, activeSlide, 'approve');
+});
+
+const createUserContent = ((contentId, action) => {
+  const currentUserId = document.getElementById('users-ids').dataset['currentUserId'];
+  const friendshipId = document.getElementById('users-ids').dataset['friendshipUserId'];
+  const url = `/users/${currentUserId}/friendships/${friendshipId}/contents/${contentId}/user_contents`;
+  let data = {liked: action};
+
+  fetch(url, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(res => {
+    console.log("Request complete! response:", res);
   });
-    // adding the 'showing' or 'active' slide class to each element
-  function goToSlide(action, content_id) {
-    $activeSlide.removeClass("active");
-    $activeSlide = $activeSlide.next(".slide");
-    const friendship_id = document.getElementById('users-ids').dataset['friendshipUserId'];
-    const current_user_id = document.getElementById('users-ids').dataset['currentUserId'];
-    const url = `/users/${current_user_id}/friendships/${friendship_id}/contents/${content_id}/user_contents`;
-    // send data to controller
-    // if(action == "approve"){
-    //   console.log(action);
-    // } else {
-    //   console.log('dislike');
-    // }
-    let data = {liked: action};
-    fetch(url, {
-      method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(res => {
-      console.log("Request complete! response:", res);
+});
+
+// create function to check if there is a match everytime content is shown and liked/disliked
+const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
+  url = `/contact_contents/${contactId}`;
+
+  fetch(url)
+  .then(response => response.json())
+  .then((data) => {
+    result = false;
+    data.forEach(content => {
+      if (content.content_id === Number.parseInt(contentId) && content.liked === true && action == 'approve') {
+        result = true
+      }
     });
-    $activeSlide.addClass("active");
-  }
+    if (result === true) {
+      console.log("it's a match!")
+      // alert
+    } else {
+      console.log("it's not a match!")
+      goToSlide(activeSlide);
+    }
+  })
+
+})
+
+const goToSlide = ((activeSlide) => {
+  activeSlide.classList.remove("active-slide");
+  const nextActiveSlide = activeSlide.nextElementSibling;
+  nextActiveSlide.classList.add("active-slide");
 });

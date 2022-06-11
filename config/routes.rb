@@ -22,9 +22,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  # resources :matches, only: [:index, :show]
 
-  # user_contents does not need to be nested within friendships
-  # only need content_id to create user_content
-
+  get "contact_contents/:contact_id", to: "user_contents#contact_rated_content_as_json"
 end
