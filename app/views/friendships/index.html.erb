@@ -1,4 +1,6 @@
+<h1>Friendships</h1>
+
 <% @friendships.each do |friendship| %>
- <%= friendship.contact_id %>
- <%= friendship.initiator_id %>
+ <%= friendship.contact.first_name.capitalize%>
+
 <% end %>
