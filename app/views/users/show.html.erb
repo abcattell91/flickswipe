@@ -1,13 +1,28 @@
-<%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class:"avatar-large"%>
-<%= @user.first_name %>'s Dashboard</h1>
+<% if current_user.photo.key.present? %>
+  <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+<% else %>
+  <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
+<% end %>
+
+<%= current_user.first_name %>'s Dashboard</h1>
 
 
 <h2>Friendships</h2>
-<ol>
-</ol>
+
+
 <div class="friendships" data-controller="friendship">
+
 <% @friendships.each do |friendship| %>
-  <button data-friendship-target="btn" data-action="click->friendship#friendClicked" data-friendship-index="<%= friendship.id %>"><%= image_tag "Avatar.jpg", class:"avatar-large"%></button>
+  <button data-friendship-target="btn" data-action="click->friendship#friendClicked" data-friendship-index="<%= friendship.id %>">
+    <% if current_user.photo.key.present? %>
+      <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar" %>
+    <% else %>
+      <%= image_tag 'Avatar.jpg', class: "avatar" %>
+    <% end %></button>
   <%= link_to "link", user_friendship_contents_path(@user, friendship.id) %>
 <% end %>
 </div>
+
+<% @friendships.each do |friendship| %>
+  <%=  %>
+<% end %>
