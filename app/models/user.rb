@@ -7,12 +7,4 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  # def profile_picture
-  #   if photo.attached?
-  #     photo.key
-  #   else
-  #     "Avatar.jpg"
-  #   end
-  # end
 end
