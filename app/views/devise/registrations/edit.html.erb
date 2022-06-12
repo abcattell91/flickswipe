@@ -13,7 +13,7 @@
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true %><br />
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.text_field :last_name, autofocus: true %><br />
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -25,6 +25,7 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
