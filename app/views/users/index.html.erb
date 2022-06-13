@@ -9,4 +9,19 @@
     <% end %>
     <% end %>
   </ol>
-<%= link_to 'Friendships', user_friendships_path(@user)  %>
+<%= link_to 'Friendships', user_friendships_path(@user), class: "btn btn-sm btn-primary" %>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+   Add a friend
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <% @users.each do |user| %>
+     <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
+      <%= link_to "#{user.first_name} following!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+       <% else %>
+       <%= link_to "#{user.first_name} - add as Flickr", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
