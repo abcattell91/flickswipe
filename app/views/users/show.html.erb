@@ -1,24 +1,19 @@
-<% if current_user.photo.key.present? %>
-  <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
-<% else %>
-  <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
-<% end %>
+<div class="user-dashboard">
+  <% if current_user.photo.key.present? %>
+    <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+  <% else %>
+    <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
+  <% end %>
 
-<%= current_user.first_name %>'s Dashboard</h1>
-
-
-<h2>Friendships</h2>
-
-
-<div class="friendships" data-controller="friendship">
+  <%= current_user.first_name.capitalize %>'s Dashboard
+  <hr>
+</div>
+<h2 class="current-friends"><%= current_user.first_name.capitalize %>'s Friends</h2>
+<div class="friendship">
   <% @friendships.each do |friendship| %>
-    <button class="friend-btn" data-friendship-target="btn" data-action="click->friendship#friendClicked" data-friendship-index="<%= friendship.id %>">
-      <% @users.each do |user| %>
-        <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
-          <%= link_to user_friendship_contents_path(@user, friendship.id) do %>
-            <%= cl_image_tag user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
-        <% end %>
-      <% end %>
+        <%= link_to user_friendship_contents_path(@user, friendship.id) do %>
+        <% @users.each do |user| %>
+          <%=cl_image_tag user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %><% end %>
     <% end %>
   <% end %>
 </div>
