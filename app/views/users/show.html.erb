@@ -11,6 +11,17 @@
 <h2 class="current-friends"><%= current_user.first_name.capitalize %>'s Friends</h2>
 <div class="friendship">
   <% @friendships.each do |friendship| %>
+
+        <%= link_to user_friendship_contents_path(@user, friendship.id) do %>
+        <% @users.each do |user| %>
+          <%=cl_image_tag user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %><% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2 class="current-friends"><%= current_user.first_name.capitalize %>'s Friends</h2>
+<div class="friendship">
+  <% @friendships.each do |friendship| %>
         <%= link_to user_friendship_contents_path(@user, friendship.id) do %>
         <% @users.each do |user| %>
           <%=cl_image_tag user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %><% end %>
