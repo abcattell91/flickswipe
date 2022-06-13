@@ -6,7 +6,12 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    Friendship.create(friendship_params)
+    if Friendship.exists?(friendship_params)
+        redirect_to users_path
+    else
+      Friendship.create(friendship_params)
+        redirect_to users_path
+    end
   end
 
   private
