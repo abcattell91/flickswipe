@@ -22,6 +22,8 @@ users = []
   puts "created user with id: #{user.id}"
 end
 
+# leave the below for now.. Will be useful when attaching cloudinary profile pictures to seed heroku database
+
 # user1 = User.create(email: "email@email.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
 # user2 = User.create(email: "email2@email.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
 # user3 = User.create(email: "email3@email.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
