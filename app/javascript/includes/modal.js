@@ -33,7 +33,7 @@ modalClose.forEach(function(btn, index){
 overlayActive.forEach(function(item, index){
   item.addEventListener('click', function() {
     overlayActive.forEach(function(overlay){
-      overlay.classList.remove('active');
+      overlay.classList.remove('active-slide');
       })
     modalBg.forEach(function(item){
       item.classList.remove('active');
