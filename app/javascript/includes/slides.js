@@ -64,6 +64,7 @@
 //     }
 // adasd
 
+import swal from "sweetalert";
 
 
 const activeSlide = document.querySelector('.slide');
@@ -105,13 +106,13 @@ const createUserContent = ((contentId, action) => {
 
 // create function to check if there is a match everytime content is shown and liked/disliked
 const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
-  url = `/contact_contents/${contactId}`;
+  const url = `/contact_contents/${contactId}`;
 
 
   fetch(url)
   .then(response => response.json())
   .then((data) => {
-    result = false;
+    let result = false;
     data.forEach(content => {
       if (content.content_id === Number.parseInt(contentId) && content.liked === true && action == 'approve') {
         result = true
@@ -119,7 +120,7 @@ const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
     });
     if (result === true) {
       console.log("it's a match!")
-      // alert
+      swal("It's a Match!", "Click here to watch", "success");
     } else {
       console.log("it's not a match!")
       goToSlide(activeSlide);
