@@ -5,11 +5,13 @@
     <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
   <% end %>
 
-  <%= current_user.first_name.capitalize %>'s Dashboard
-  <hr>
-</div>
+  <%# current_user.first_name.capitalize %>
+  <%# <hr>
+</div> %>
 
-<h2 class="current-friends"><%= current_user.first_name.capitalize %>'s Friends</h2>
+<%# <h2 class="current-friends"> %>
+<%# current_user.first_name.capitalize %>
+<%# </h2> %>
 <div class="friendship">
   <% @friendships_data.each do |data| %>
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
