@@ -1,8 +1,16 @@
 .footer {
-  background: #ff0000;;
-  display: flex;
+  background: #000000;;
   align-items: center;
   justify-content: center;
   height: 40px;
+  padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
 }
