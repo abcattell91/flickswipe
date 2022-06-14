@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_081335) do
+
+ActiveRecord::Schema.define(version: 2022_06_13_161917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +48,10 @@ ActiveRecord::Schema.define(version: 2022_06_12_081335) do
     t.string "title"
     t.text "description"
     t.float "rating"
-    t.string "genres", default: [], array: true
+    t.string "genre"
     t.string "poster"
     t.string "content_type"
-    t.string "streaming_services", default: [], array: true
+    t.string "streaming_service"
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 2022_06_12_081335) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["contact_id"], name: "index_friendships_on_contact_id"
+    t.index ["initiator_id", "contact_id"], name: "index_friendships_on_initiator_id_and_contact_id", unique: true
     t.index ["initiator_id"], name: "index_friendships_on_initiator_id"
   end
 

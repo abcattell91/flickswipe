@@ -11,6 +11,7 @@ puts 'database is clean'
 
 puts 'Creating Users...'
 
+
 # users = []
 
 # 100.times do
@@ -344,8 +345,6 @@ user79.photo.attach(io: file, filename: 'user79.jpeg', content_type: 'image/jpg'
 file = URI.open('https://images.unsplash.com/photo-1584897129667-cabdff21142f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxza2lubnklMjBwZW9wbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60')
 user80 = User.create(email: "email80@email.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
 user80.photo.attach(io: file, filename: 'user80.jpeg', content_type: 'image/jpg')
-
-
 
 sleep 4
 
