@@ -1,0 +1,33 @@
+.friend-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  color: #ffffffba;
+  top: 0%;
+  padding: 8px;
+}
+.friendship {
+  text-align: center;
+  padding: 16px;
+  margin: 16px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 16px;
+}
+
+.friendship a {
+  text-align: center;
+  text-decoration: none;
+}
+
+.friendship img {
+  margin: 8px;
+}
+
+.current-friends {
+  text-align: center;
+}
+
+.user-dashboard {
+  padding: 16px;
+}
