@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+
+.heading {
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+
+.navbar {
+  background-color: rgb(255, 255, 255);
+}
+
+.flickswipe {
+  justify-content: center;
+  display: flex;
+  height: 150px;
+}
+
+.login {
+  border-top: solid 1px;
+  padding: 1px;
+}

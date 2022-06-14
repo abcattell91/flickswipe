@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2022_06_13_161917) do
     t.string "title"
     t.text "description"
     t.float "rating"
-    t.string "genres", default: [], array: true
+    t.string "genre"
     t.string "poster"
     t.string "content_type"
-    t.string "streaming_services", default: [], array: true
+    t.string "streaming_service"
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
