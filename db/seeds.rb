@@ -1,7 +1,7 @@
 require "open-uri"
 
 puts 'cleaning up content....'
-# Content.destroy_all
+Content.destroy_all
 puts 'cleaning up users....'
 User.delete_all
 puts 'database is clean'
