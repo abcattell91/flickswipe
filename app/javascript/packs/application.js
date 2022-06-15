@@ -14,6 +14,8 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+import '../stylesheets/application';
+
 
 require('../includes/slides')
 require('../includes/modal')
