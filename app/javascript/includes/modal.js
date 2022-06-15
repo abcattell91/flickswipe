@@ -1,6 +1,7 @@
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBg = document.querySelectorAll(".movie-modal");
 const modalClose = document.querySelectorAll(".close-button");
+const modalCloseOutside = document.querySelectorAll(".overlay")
 const overlayActive = document.querySelectorAll(".overlay");
 const overlayClose = document.querySelectorAll(".overlay");
 
@@ -24,11 +25,17 @@ modalClose.forEach(function(btn, index){
     modalBg.forEach(function(item){
       item.classList.remove('active');
     });
+  });
+});
+
+modalCloseOutside.forEach(function(btn, index){
+  btn.addEventListener('click', function() {
     overlayClose.forEach(function(item){
       item.classList.remove('active');
     });
   });
 });
+
 
 overlayActive.forEach(function(item, index){
   item.addEventListener('click', function() {
