@@ -15,7 +15,11 @@
 <div class="friendship">
   <% @friendships_data.each do |data| %>
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
-      <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
+      <% if data[:user_photo_key].present?%>
+        <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
+      <% else %>
+        <%= image_tag 'Avatar.jpg', :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
+      <% end %>
       <%# <div class="users"> %>
         <%# data[:user_first_name] %>
       <%# </div> %>
