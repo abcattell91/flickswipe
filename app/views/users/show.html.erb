@@ -1,9 +1,9 @@
 <div class="user-dashboard">
-  <% if current_user.photo.key.present? %>
-    <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
-  <% else %>
-    <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
-  <% end %>
+  <%# if current_user.photo.key.present? %>
+    <%# cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+  <%# else %>
+    <%# image_tag 'Avatar.jpg', class: "avatar-large" %>
+  <%# end %>
 
   <%# current_user.first_name.capitalize %>
   <%# <hr>
