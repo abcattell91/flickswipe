@@ -1,6 +1,6 @@
     <ul id="slides" class="close-outside">
       <% @contents.shuffle.each_with_index do |content, i| %>
-      <li class="slide" data-id="<%= content.id %>">
+      <li class="slide" data-id="<%= content.id %>" data-content-title="<%= content.title %>">
         <div class="image-carousel" style="background-image: url('<%= content.poster %>')">
         </div>
         <button class="modal-btn"><i class='fas fa-info-circle fa-3x'></i></button>

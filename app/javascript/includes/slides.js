@@ -64,7 +64,8 @@
 //     }
 // adasd
 
-import swal from "sweetalert";
+// import swal from "sweetalert";
+const Swal = require('sweetalert2')
 
 
 const activeSlide = document.querySelector('.slide');
@@ -75,18 +76,20 @@ activeSlide.classList.add("active-slide");
 document.getElementById('decline').addEventListener('click', (event) => {
   const activeSlide = document.querySelector('.active-slide');
   const contentId = activeSlide.dataset["id"];
+  const contentTitle = activeSlide.dataset["contentTitle"];
   const contactId = document.getElementById('users-ids').dataset['contactId'];
   createUserContent(contentId, 'decline');
-  checkIfMatch(contentId, contactId, activeSlide, 'decline');
+  checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
 });
 
   // on click approve then what?
 document.getElementById('approve').addEventListener('click', (event) => {
   const activeSlide = document.querySelector('.active-slide');
   const contentId = activeSlide.dataset["id"];
+  const contentTitle = activeSlide.dataset["contentTitle"];
   const contactId = document.getElementById('users-ids').dataset['contactId'];
   createUserContent(contentId, 'approve');
-  checkIfMatch(contentId, contactId, activeSlide, 'approve');
+  checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
 });
 
 const createUserContent = ((contentId, action) => {
@@ -105,7 +108,7 @@ const createUserContent = ((contentId, action) => {
 });
 
 // create function to check if there is a match everytime content is shown and liked/disliked
-const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
+const checkIfMatch = ((contentId, contactId, contentTitle, activeSlide, action) => {
   const url = `/contact_contents/${contactId}`;
 
 
@@ -120,7 +123,7 @@ const checkIfMatch = ((contentId, contactId, activeSlide, action) => {
     });
     if (result === true) {
       console.log("it's a match!")
-      swal("It's a Match!", "Click here to watch", "success");
+      Swal.fire("It's a Match!", `Click here to watch ${contentTitle}`, "success");
     } else {
       console.log("it's not a match!")
       goToSlide(activeSlide);
