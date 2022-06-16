@@ -25,6 +25,9 @@ modalClose.forEach(function(btn, index){
     modalBg.forEach(function(item){
       item.classList.remove('active');
     });
+    overlayClose.forEach(function(item){
+      item.classList.remove('active');
+    });
   });
 });
 
@@ -35,6 +38,7 @@ modalCloseOutside.forEach(function(btn, index){
     });
   });
 });
+
 
 
 overlayActive.forEach(function(item, index){
