@@ -1,34 +1,62 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "first name" } %>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last name" } %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo, as: :file %><br />
+<h2 class="home-title">Sign up</h2>
+<div class="container">
+  <p class="slogan">never argue about what to watch again...</p>
+  <div class="home-image">
+    <%= image_tag("flickswipe_logo.png")%>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-<%= render "devise/shared/links" %>
+    <div class="form-inputs">
+      <div class="d-flex align-items-center">
+      <p class="input">First name</p>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "first name", class: "w-100" } %>
+      </div>
+      <div class="d-flex align-items-center">
+      <p class="input">Last name</p>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "last name", class: "w-100"  } %>
+      </div>
+      <div class="d-flex align-items-center">
+      <p class="input-email">Email</p>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "email", class: "w-100"  }%>
+      </div>
+      <div class="d-flex align-items-center">
+      <p class="input-password">Password</p>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  label: false,
+                  input_html: { autocomplete: "new-password", class: "w-100"  } %>
+      </div>
+      <div class="d-flex align-items-center">
+      <p class="input-password-confirm">Password</p>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  label: false,
+                  input_html: { autocomplete: "new-password", class: "w-100"  } %>
+      </div>
+      <div class="d-flex align-items-center">
+      <p class="input-photo">Photo</p>
+      <%= f.input :photo, as: :file,
+                  label: false %><br />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: 'btn btn-block' %>
+    </div>
+  <% end %>
+</div>
