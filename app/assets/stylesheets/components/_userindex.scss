@@ -46,7 +46,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   background: #FDFEFF;
 	transition: background .6s ease;
 	border-radius: 10px;
-	padding: 20px 24px 20px 24px;
+	padding: 2px 24px 14px 24px;
 	box-shadow: 0 8px 40px rgba(#000000, .2);
 
 
@@ -64,9 +64,9 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 		}
 
 		.check {
-			position: absolute;
-			right: 4.9em;
-			bottom: 11.47em;
+      position: absolute;
+      right: 5em;
+      bottom: 23.69em;
 			i {
 				color: #fff;
 				width: 20px;
@@ -117,12 +117,13 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 		.btn {
 			color: #fff;
 			width: 130px;
-			height: 42px;
+			height: 40px;
 			outline: none;
 			border: none;
 			display: block;
 			cursor: pointer;
 			font-weight: 300;
+      font-size: 16px;
 			margin-left: auto;
 			margin-right: auto;
 			border-radius: 70px;
@@ -199,4 +200,29 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
+}
+
+.button-box {
+  position: relative;
+  top: -40px;
+  right: 56px;
+}
+
+.button-box1 {
+  padding-left: 176px;
+}
+
+.user-header h1{
+   color: #2D354A;
+   font-size: 24px;
+   font-weight: 600;
+   text-align: left;
+   position: relative;
+   top: 10px;
+}
+
+.user-header hr {
+  border: none;
+  height: 2px;
+  background: #dddddd
 }
