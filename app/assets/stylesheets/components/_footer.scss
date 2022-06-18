@@ -1,16 +1,22 @@
 .footer {
-  background: #000000;;
   align-items: center;
   justify-content: center;
   height: 40px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
-  position: absolute;
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+  position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
+  padding: 5px;
+}
+
+.fab {
+  padding: 5px;
+  color: white;
 }
