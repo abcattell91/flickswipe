@@ -1,3 +1,45 @@
+
+<div class="wrapper">
+
+
+	<div class="profile">
+    <div class="thumbnail">
+      <% if current_user.photo.key.present? %>
+      <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+      <% else %>
+      <%= image_tag 'Avatar.jpg', class: "thumbnail" %>
+      <% end %>
+    </div>
+		<div class="check"><i class="fas fa-check"></i></div>
+		<h3 class="name"><%= "#{current_user.first_name} #{current_user.last_name} " %></h3>
+		<p class="title">Certified Flickswiper</p>
+		<p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
+		<%= link_to "View Friends", user_path(id: current_user), class: "btn"%>
+	</div>
+
+	<div class="social-icons">
+		<div class="icon">
+			<a href="/"><i class="fab fa-dribbble"></i></a>
+			<h4>12.8k</h4>
+			<p>Followers</p>
+		</div>
+
+		<div class="icon">
+			<a href="#"><i class="fab fa-behance"></i></a>
+			<h4>12.8k</h4>
+			<p>Followers</p>
+		</div>
+
+		<div class="icon">
+			<a href="#"><i class="fab fa-twitter"></i></a>
+			<h4>12.8k</h4>
+			<p>Followers</p>
+		</div>
+	</div>
+</div>
+
+
+
 <div class="background d-flex justify-content-center">
   <div class="dropdown">
     <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

@@ -1,0 +1,10 @@
+<h1>My profile</h1>
+
+
+<% @profiles.each do |profile| %>
+  <%= link_to profile_path(profile) do  %>
+  <%= profile.first_name %>
+  <br>
+  <%= profile.last_name %>
+  <% end %>
+<% end %>
