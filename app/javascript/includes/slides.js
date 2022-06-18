@@ -123,7 +123,27 @@ const checkIfMatch = ((contentId, contactId, contentTitle, activeSlide, action) 
     });
     if (result === true) {
       console.log("it's a match!")
-      Swal.fire("It's a Match!", `Click here to watch ${contentTitle}`, "success");
+      Swal.fire({
+        title: '<strong>HTML <u>example</u></strong>',
+        icon: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Great!',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down"></i>',
+        cancelButtonAriaLabel: 'Thumbs down'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            console.log("Approve Thumb up")
+            window.location.href = `/users/1/friendships/2/contents/${contentId}`
+
+        } else {
+          goToSlide(activeSlide);
+        }
+      })
     } else {
       console.log("it's not a match!")
       goToSlide(activeSlide);
