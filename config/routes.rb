@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#home'
+  root to: 'users#index'
   devise_for :users, :path_prefix => 'd'
    resources :users, :only =>[:show, :index] do
     resources :friendships, only: [:index, :create] do
