@@ -5,7 +5,7 @@
   height: 40px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -13,4 +13,10 @@
 .footer-links {
   display: flex;
   justify-content: center;
+  padding: 5px;
+}
+
+.fab {
+  padding: 5px;
+  color: white;
 }
