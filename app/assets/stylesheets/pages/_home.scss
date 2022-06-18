@@ -19,3 +19,120 @@
   border-top: solid 1px;
   padding: 1px;
 }
+
+.container {
+  height: 200px;
+  width: 100%;
+}
+
+.home-image {
+  height: 200px;
+  width: 100%;
+  margin-left: 3rem;
+  display: flex;
+}
+
+.slogan {
+  text-align: center
+}
+
+.home-title {
+  text-align: center;
+  border-top: solid 1px black;
+}
+
+.input {
+  flex-shrink: 0;
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.user_first_name, .user_last_name, .user_email, .user_password, .user_password_confirmation, .user_photo {
+  width: 100%;
+}
+
+.input-email {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  padding-left: 25px;
+  padding-right: 25px;
+  text-align: center;
+}
+
+.input-password-confirm {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  padding-right: 14px;
+}
+
+.input-password {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  padding-right: 14px;
+  position: relative;
+  top: -11px;
+}
+
+.input-photo {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.login-email {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+  padding-right: 22px;
+  padding-left: 22px;
+}
+
+.login-password {
+  margin-right: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px #ffffff;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 6px;
+  background-color: black !important;
+  color: white !important;
+  border: solid 1px #ffffff !important;
+}
+
+.btn-block:hover {
+  width: 100%;
+  padding: 6px;
+  background-color: rgb(62, 59, 59) !important;
+  color: white !important;
+  border: solid 1px #ffffff !important;
+  transition: 0.5s ease;
+}
