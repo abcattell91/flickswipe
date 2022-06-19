@@ -1,7 +1,10 @@
 
 <div class="wrapper">
 
-
+<div class="user-header">
+   <h1><%= current_user.first_name %></h1>
+   <hr>
+</div>
 	<div class="profile">
     <div class="thumbnail">
       <% if current_user.photo.key.present? %>
@@ -14,7 +17,25 @@
 		<h3 class="name"><%= "#{current_user.first_name} #{current_user.last_name} " %></h3>
 		<p class="title">Certified Flickswiper</p>
 		<p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
-		<%= link_to "View Friends", user_path(id: current_user), class: "btn"%>
+
+    <div class="button-box1">
+        <%= link_to "View Friends", user_path(id: current_user), class: "btn"%>
+    </div>
+        <div class="dropdown">
+      <div class="button-box">
+        <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Add Friends
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <% @users.each do |user| %>
+          <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
+            <%= link_to "#{user.first_name} Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+            <% else %>
+            <%= link_to "#{user.first_name} - add Friend", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
 	</div>
 
 	<div class="social-icons">
@@ -39,7 +60,7 @@
 </div>
 
 
-
+<%#
 <div class="background d-flex justify-content-center">
   <div class="dropdown">
     <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,13 +68,13 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <% @users.each do |user| %>
-       <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
-        <%= link_to "#{user.first_name} Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
-         <% else %>
-         <%= link_to "#{user.first_name} - add Friend", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
-        <% end %>
-      <% end %>
-    </div>
-    <%= link_to "View Friends", user_path(id: current_user), class: "btn btn-lg btn-secondary"%>
-  </div>
-</div>
+       <%# <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
+        <%# <%= link_to "#{user.first_name} Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+         <%# <% else %>
+         <%# <%= link_to "#{user.first_name} - add Friend", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+        <%# <% end %>
+      <%# <% end %>
+    <%# </div> %>
+    <%# <%= link_to "View Friends", user_path(id: current_user), class: "btn btn-lg btn-secondary"%>
+  <%# </div> %>
+<%# </div>  %>
