@@ -3,39 +3,81 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-puts 'Cleaning up content....'
+puts '\/\/\/\/\/\/\/\/--CLEANING UP CONTENT--\/\/\/\/\/\/\/\/'
+sleep 5
 Content.destroy_all
-puts 'Content deleted'
+puts '\/\/\/\/\/\/\/\/--CONTENT DELETED--\/\/\/\/\/\/\/\/'
 sleep 1
-puts 'Cleaning up users....'
+puts " "
+puts " "
+
+puts '\/\/\/\/\/\/\/\/--CLEANING UP USERS--\/\/\/\/\/\/\/\/'
 User.destroy_all
-puts 'Users removed'
+sleep 5
+puts '\/\/\/\/\/\/\/\/--USERS REMOVED--\/\/\/\/\/\/\/\/'
 sleep 1
-puts 'Removing streaming services list....'
+puts " "
+puts " "
+
+puts '\/\/\/\/\/\/\/\/--CLEANING UP STREAMING SERVICES LIST--\/\/\/\/\/\/\/\/'
 StreamingService.destroy_all
-puts 'Streaming Services list removed'
+sleep 5
+puts '\/\/\/\/\/\/\/\/--STREAMING SERVICES LIST REMOVED--\/\/\/\/\/\/\/\/'
 sleep 1
-puts 'Removing content streaming data....'
+puts " "
+puts " "
+
+puts '\/\/\/\/\/\/\/\/--CLEANING UP STREAMING DATA--\/\/\/\/\/\/\/\/'
 ContentStreamingService.destroy_all
-puts 'Removed Streaming Data'
+sleep 5
+puts '\/\/\/\/\/\/\/\/--REMOVED STREAMING DATA--\/\/\/\/\/\/\/\/'
 sleep 1
-puts "Removing Created Friendships"
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CLEANING UP FRIENDSHIPS--\/\/\/\/\/\/\/\/"
 Friendship.destroy_all
-puts 'Removed Friendships'
+sleep 5
+puts '\/\/\/\/\/\/\/\/--REMOVED FRIENDSHIPS--\/\/\/\/\/\/\/\/'
 sleep 1
-puts "Removing Users' Liked Content"
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CLEANING UP USERS' LIKED CONTENT--\/\/\/\/\/\/\/\/"
 UserContent.destroy_all
-puts "Removed Users' Liked Content"
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts "\/\/\/\/\/\/\/\/--REMOVED USERS' LIKED CONTENT--\/\/\/\/\/\/\/\/"
 sleep 1
 
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
 puts 'Database is now clean, preparing to seed. Please Wait......'
-sleep 4
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 puts '\/\/\/\/\/\/\/\/--DATABASE READY TO SEED--\/\/\/\/\/\/\/\/'
 
 
 # The movie api is different to tv shows so have to do the api requests twice.
 
-puts 'Creating Users...'
+puts '\/\/\/\/\/\/\/\/--CREATING USERS--\/\/\/\/\/\/\/\/'
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
 file = URI.open('https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGVhZHNob3R8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60')
 user1 = User.create(email: "email@email.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
@@ -437,9 +479,24 @@ user80 = User.create(email: "email80@email.com", password: "123456", first_name:
 user80.photo.attach(io: file, filename: 'user80.jpeg', content_type: 'image/jpg')
 puts "#{user80} created"
 
-puts "All Users Created"
-sleep 2
-puts "Creating Friendships"
+puts "*****ALL USERS CREATED*****"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CREATING FRIENDSHIPS--\/\/\/\/\/\/\/\/"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
 friendship = Friendship.create(initiator: user1, contact: user2)
 puts "Created #{friendship}"
 friendship = Friendship.create(initiator: user1, contact: user3)
@@ -1119,10 +1176,24 @@ puts "Created #{friendship}"
 friendship = Friendship.create(initiator: user80, contact: user1)
 puts "Created #{friendship}"
 
-puts "All friendships created"
-sleep 4
+puts "*****ALL FRIENDSHIPS CREATED*****"
 
-puts "Creating Streaming Services"
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CREATING STREAMING SERVICES--\/\/\/\/\/\/\/\/"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
 StreamingService.create(
   full_provider: 'Netflix',
   provider: 'netflix',
@@ -1163,16 +1234,29 @@ StreamingService.create(
   provider: 'britbox',
   icon: 'https://image.tmdb.org/t/p/original/aGIS8maihUm60A3moKYD9gfYHYT.jpg'
 )
-puts "Streaming Services Created"
-sleep 4
+puts "*****STREAMING SERVICES CREATED*****"
 
-puts "Calling Movie API's for Content Creation"
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CALLING MOVIE API'S FOR CONTENT CREATION--\/\/\/\/\/\/\/\/"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
 movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API_KEY']+'&language=en-US'
 # movie_url = 'https://api.themoviedb.org/3/movie/popular?api_key='+ENV['API_KEY']+'&language=en-US'
 # movie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=bee3f4d040e52ad1c0e3eac80d78e941&language=en-US'
 
-4.times do |m|
+8.times do |m|
   contents = JSON.parse(URI.open("#{movie_url}&page=#{m + 1}").read)['results']
 
   contents.each do |content|
@@ -1241,10 +1325,24 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
   end
 end
 
-puts "Movie Content Created"
-sleep 4
+puts "*****MOVIE CONTENT CREATED*****"
 
-puts "Calling TV Show API's for Content Creation"
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
+puts "\/\/\/\/\/\/\/\/--CALLING TV SHOW API's FOR CONTENT CREATION--\/\/\/\/\/\/\/\/"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
+
 tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']+'&language=en-US'
 4.times do |m|
   contents = JSON.parse(URI.open("#{tv_url}&page=#{m + 1}").read)['results']
@@ -1307,11 +1405,23 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']
     end
   end
 end
-puts "TV Show Content Created"
+puts "*****TV SHOWS CONTENT CREATED*****"
 
-sleep 4
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
-puts "Liking Content for users...."
+puts "\/\/\/\/\/\/\/\/--LIKING CONTENT FOR USERS--\/\/\/\/\/\/\/\/"
+
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
 like = UserContent.create(user_id: 1, liked: true, content_id: 3)
 puts "#{like} created"
@@ -2114,12 +2224,22 @@ puts "#{like} created"
 like = UserContent.create(user_id: 80, liked: true, content_id: 32)
 puts "#{like} created"
 
-puts "Users Liked Content Created"
+puts "*****USERS LIKED CONTENT CREATED*****"
 
-sleep 2
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
-puts "Finishing seed - tidying up"
+puts "\/\/\/\/\/\/\/\/--FINISHING SEED * TIDYING UP--\/\/\/\/\/\/\/\/"
 
-sleep 4
+sleep 5
+puts " "
+puts " "
+puts " "
+puts " "
+puts " "
 
-puts 'Seeding is Complete'
+puts '\/\/\/\/\/\/\/\/--**SEEDING COMPLETE**--\/\/\/\/\/\/\/\/'
