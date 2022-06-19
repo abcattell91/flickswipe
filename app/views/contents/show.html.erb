@@ -25,11 +25,14 @@
   </div>
 </div>
 
+<div class="content-body">
+<p class="provider-text">Click below to start watching</p>
+</div>
+
 <div class="content-providers">
-  Where to watch <br>
   <div class="provider">
-  <% @content.streaming_services.each do |provider| %>
-    <%= provider %>
+  <% @content.content_streaming_services.each do |content| %>
+    <a href="<%= content.content_link %>" target="_blank"><img alt="Streaming Icon" src="<%= content.streaming_service.icon %>"></a>
   <% end %>
   </div>
 </div>

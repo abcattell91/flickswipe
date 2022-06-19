@@ -1212,7 +1212,7 @@ StreamingService.create(
 StreamingService.create(
   full_provider: 'Disney Plus',
   provider: 'disney',
-  icon: 'https://image.tmdb.org/t/p/original/v8vA6WnPVTOE1o39waNFVmAqEJj.jpg'
+  icon: 'https://image.tmdb.org/t/p/original/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg'
 )
 StreamingService.create(
   full_provider: 'Now TV',
