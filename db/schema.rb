@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_170708) do
   end
 
   create_table "streaming_services", force: :cascade do |t|
+    t.string "full_provider"
     t.string "provider"
     t.string "icon"
     t.datetime "created_at", precision: 6, null: false

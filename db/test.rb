@@ -6,7 +6,7 @@ require 'json'
 puts "test"
 
 
-rapid_url = URI("https://streaming-availability.p.rapidapi.com/get/basic?country=us&tmdb_id=movie%2F615469&output_language=en")
+rapid_url = URI("https://streaming-availability.p.rapidapi.com/get/basic?country=us&tmdb_id=movie%2F4444&output_language=en")
 
 http = Net::HTTP.new(rapid_url.host, rapid_url.port)
 http.use_ssl = true
@@ -19,7 +19,7 @@ request["X-RapidAPI-Host"] = 'streaming-availability.p.rapidapi.com'
 response = http.request(request)
 unless response.code == "404"
   hash = JSON.parse(response.read_body)
-  puts hash
+  puts hash["streamingInfo"]
   puts hash["streamingInfo"].keys.each do |key|
     info = StreamingService.find_by(provider: key)
       if info
