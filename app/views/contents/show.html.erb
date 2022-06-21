@@ -1,0 +1,38 @@
+<div class="content-title">
+  <h1><%= @content.title %></h1>
+</div>
+<div class="content-container">
+  <img src="<%= @content.poster %>" alt="Content Poster">
+</div>
+
+<%# Content body below %>
+<div class="content-body">
+  <div class="content-rating">
+    <%= image_tag 'tmdb-icon.svg', class: "tmdb-img" %> <p><%= @content.rating %></p>
+  </div>
+  <div class="content-runtime">
+    Runtime: <%= @content.duration %> mins
+  </div>
+
+  <div class="content-genres">
+  Genres:
+  <% @content.genres.each do |genre| %>
+    <%= genre %>
+  <% end %>
+  </div>
+  <div class="content-description">
+    <p><%= @content.description %></p>
+  </div>
+</div>
+
+<div class="content-body">
+<p class="provider-text">Click below to start watching</p>
+</div>
+
+<div class="content-providers">
+  <div class="provider">
+  <% @content.content_streaming_services.each do |content| %>
+    <a href="<%= content.content_link %>" target="_blank"><img alt="Streaming Icon" src="<%= content.streaming_service.icon %>"></a>
+  <% end %>
+  </div>
+</div>

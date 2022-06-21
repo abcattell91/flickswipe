@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_161917) do
+ActiveRecord::Schema.define(version: 2022_06_18_170708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2022_06_13_161917) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "content_streaming_services", force: :cascade do |t|
+    t.bigint "streaming_service_id", null: false
+    t.bigint "content_id", null: false
+    t.string "content_link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_streaming_services_on_content_id"
+    t.index ["streaming_service_id"], name: "index_content_streaming_services_on_streaming_service_id"
+  end
+
   create_table "contents", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -50,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_161917) do
     t.string "genres", default: [], array: true
     t.string "poster"
     t.string "content_type"
-    t.string "streaming_services", default: [], array: true
+    t.string "watch_providers", default: [], array: true
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -74,6 +84,14 @@ ActiveRecord::Schema.define(version: 2022_06_13_161917) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["content_id"], name: "index_matches_on_content_id"
     t.index ["friendship_id"], name: "index_matches_on_friendship_id"
+  end
+
+  create_table "streaming_services", force: :cascade do |t|
+    t.string "full_provider"
+    t.string "provider"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_contents", force: :cascade do |t|
@@ -102,6 +120,8 @@ ActiveRecord::Schema.define(version: 2022_06_13_161917) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "content_streaming_services", "contents"
+  add_foreign_key "content_streaming_services", "streaming_services"
   add_foreign_key "friendships", "users", column: "contact_id"
   add_foreign_key "friendships", "users", column: "initiator_id"
   add_foreign_key "matches", "contents"

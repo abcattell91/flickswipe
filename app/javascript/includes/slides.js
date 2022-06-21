@@ -1,68 +1,33 @@
-// Below was all my testing trying to rewrite the above code. It failed.
+// potential ability to swipe implemented below
 
-// const carouselSlide = document.querySelector(".carousel-slide");
-// const carouselImages = document.querySelectorAll('.carousel-slide img')
-
-// // Buttons
-// const like = document.getElementById('approve');
-// const dislike = document.getElementById('decline');
-
-// // Counter
-// let counter = 1;
-// const size = carouselImages[0].clientWidth;
-
-// carouselSlide.style.transform = 'translateX(' + (counter) + 'px)';
-
-// // Button Listeners
-
-// like.addEventListener('click', ()=>{
-//   if(counter <= 0) return;
-//   carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-//   counter++;
-//   console.log(counter)
-//   carouselSlide.style.transform = 'translateX(' + (-size + counter) + 'px)';
-// });
-
-// dislike.addEventListener('click', ()=>{
-//   if(counter <= 0) return;
-//   carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-//   counter++;
-//   console.log(counter)
-//   carouselSlide.style.transform = 'translateX(' + (-size + counter) + 'px)';
-// });
-
-// carouselSlide.addEventListener('transitioned', ()=>{
-//   console.log('fired')
-// })
-
-
-
-// var activeSlide = document.querySelectorAll("#slides .slide:first-child");
-// var like = document.getElementById('approve')
-// var dislike = document.getElementById('decline')
-
-// like.addEventListener('click', function() {
-//   activeSlide.classList.add('active');
-//   var content_id = activeSlide.data("id");
-//   console.log(content_id)
-// });
-
-// dislike.addEventListener('click', function() {
-//   activeSlide.classList.add('active');
-// });
-
-// function goToSlide() {
-//   activeSlide.classList.remove("active");
-//   nextSlide = activeSlide.next(".slide");
-// }
-//   activeSlide.classList.add("active");
-//   // send data to controller
-//     if(action == "approve"){
-//       console.log('like');
-//     } else {
-//       console.log('dislike');
+// document.getElementById('swipe').addEventListener('touchstart', (touchstart))
+// document.getElementById('swipe').addEventListener('touchmove', (touchmove))
+// document.getElementById('swipe').addEventListener('touchend', (touchend))
+//     function touchstart(ev){
+//       startingX = ev.touches[0].clientX;
 //     }
-// adasd
+//     function touchmove(ev){
+//       movingX = ev.touches[0].clientX;
+//     }
+//     function touchend(ev){
+//       if (startingX +200 < movingX){
+//         console.log('swiperight');
+//         const activeSlide = document.querySelector('.active-slide');
+//         const contentId = activeSlide.dataset["id"];
+//         const contentTitle = activeSlide.dataset["contentTitle"];
+//         const contactId = document.getElementById('users-ids').dataset['contactId'];
+//         createUserContent(contentId, 'decline');
+//         checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
+//       } else if (startingX -200 > movingX){
+//         console.log('swipeleft');
+//         const activeSlide = document.querySelector('.active-slide');
+//         const contentId = activeSlide.dataset["id"];
+//         const contentTitle = activeSlide.dataset["contentTitle"];
+//         const contactId = document.getElementById('users-ids').dataset['contactId'];
+//         createUserContent(contentId, 'approve');
+//         checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
+//       }
+//     };
 
 // import swal from "sweetalert";
 const Swal = require('sweetalert2')
@@ -123,9 +88,27 @@ const checkIfMatch = ((contentId, contactId, contentTitle, activeSlide, action) 
     });
     if (result === true) {
       console.log("it's a match!")
-      Swal.fire("It's a Match!", `Click here to watch ${contentTitle}`, "success");
+      Swal.fire({
+        title: `${contentTitle} has Matched!`,
+        icon: 'success',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Start Watching',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down"></i> Keep Swiping',
+        cancelButtonAriaLabel: 'Thumbs down'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = `/users/1/friendships/2/contents/${contentId}`
+
+        } else {
+          goToSlide(activeSlide);
+        }
+      })
     } else {
-      console.log("it's not a match!")
       goToSlide(activeSlide);
     }
   })
