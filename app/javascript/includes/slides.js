@@ -1,132 +1,82 @@
-// Below was all my testing trying to rewrite the above code. It failed.
-
-// const carouselSlide = document.querySelector(".carousel-slide");
-// const carouselImages = document.querySelectorAll('.carousel-slide img')
-
-// // Buttons
-// const like = document.getElementById('approve');
-// const dislike = document.getElementById('decline');
-
-// // Counter
-// let counter = 1;
-// const size = carouselImages[0].clientWidth;
-
-// carouselSlide.style.transform = 'translateX(' + (counter) + 'px)';
-
-// // Button Listeners
-
-// like.addEventListener('click', ()=>{
-//   if(counter <= 0) return;
-//   carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-//   counter++;
-//   console.log(counter)
-//   carouselSlide.style.transform = 'translateX(' + (-size + counter) + 'px)';
-// });
-
-// dislike.addEventListener('click', ()=>{
-//   if(counter <= 0) return;
-//   carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-//   counter++;
-//   console.log(counter)
-//   carouselSlide.style.transform = 'translateX(' + (-size + counter) + 'px)';
-// });
-
-// carouselSlide.addEventListener('transitioned', ()=>{
-//   console.log('fired')
-// })
-
-
-
-// var activeSlide = document.querySelectorAll("#slides .slide:first-child");
-// var like = document.getElementById('approve')
-// var dislike = document.getElementById('decline')
-
-// like.addEventListener('click', function() {
-//   activeSlide.classList.add('active');
-//   var content_id = activeSlide.data("id");
-//   console.log(content_id)
-// });
-
-// dislike.addEventListener('click', function() {
-//   activeSlide.classList.add('active');
-// });
-
-// function goToSlide() {
-//   activeSlide.classList.remove("active");
-//   nextSlide = activeSlide.next(".slide");
-// }
-//   activeSlide.classList.add("active");
-//   // send data to controller
-//     if(action == "approve"){
-//       console.log('like');
-//     } else {
-//       console.log('dislike');
-//     }
-// adasd
 
 // import swal from "sweetalert";
 const Swal = require('sweetalert2')
 
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+const logBlock = document.querySelector('.close-outside')
 
 const activeSlide = document.querySelector('.slide');
 // show first slide
 activeSlide.classList.add("active-slide");
 
-document.querySelector('.close-outside').addEventListener('touchstart', (touchstart))
-document.querySelector('.close-outside').addEventListener('touchmove', (touchmove))
-document.querySelector('.close-outside').addEventListener('touchend', (touchend))
-  var startingX, startingY, movingX, movingY;
-    function touchstart(ev){
-      ev.preventDefault();
-      startingX = ev.touches[0].clientX;
-      startingY = ev.touches[0].clientY;
+let timerInterval
+Swal.fire({
+  position: 'center',
+  icon: 'info',
+  title: 'Swipe LEFT to Like',
+  html: '<i class="fa fa-solid fa-thumbs-up fa-2x">',
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+
+let x1 = null;
+let y1 = null;
+
+function handleTouchStart(event) {
+  const firstTouch = event.touches[0];
+  x1 = firstTouch.clientX;
+  y1 = firstTouch.clientY;
+}
+
+function handleTouchMove(event) {
+  if (!x1 || !y1) {
+    return false;
+  }
+  let x2 = event.touches[0].clientX;
+  let y2 = event.touches[0].clientY;
+  let xDiff = x2 - x1;
+  let yDiff = y2 - y1;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      console.log('right')
+      const activeSlide = document.querySelector('.active-slide');
+      const contentId = activeSlide.dataset["id"];
+      const contentTitle = activeSlide.dataset["contentTitle"];
+      const contactId = document.getElementById('users-ids').dataset['contactId'];
+      createUserContent(contentId, 'decline');
+      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
     }
-    function touchmove(ev){
-      ev.preventDefault();
-      movingX = ev.touches[0].clientX;
-      movingY = ev.touches[0].clientY;
-      if(startingX +800 < movingX){
-        console.log('swiperight');
-        const activeSlide = document.querySelector('.active-slide');
-        const contentId = activeSlide.dataset["id"];
-        const contentTitle = activeSlide.dataset["contentTitle"];
-        const contactId = document.getElementById('users-ids').dataset['contactId'];
-        createUserContent(contentId, 'decline');
-        checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
-      } else if(startingX -800 > movingX){
-        console.log('swipeleft');
-        const activeSlide = document.querySelector('.active-slide');
-        const contentId = activeSlide.dataset["id"];
-        const contentTitle = activeSlide.dataset["contentTitle"];
-        const contactId = document.getElementById('users-ids').dataset['contactId'];
-        createUserContent(contentId, 'approve');
-        checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
-      }
+    else {
+      console.log('left');
+      const activeSlide = document.querySelector('.active-slide');
+      const contentId = activeSlide.dataset["id"];
+      const contentTitle = activeSlide.dataset["contentTitle"];
+      const contactId = document.getElementById('users-ids').dataset['contactId'];
+      createUserContent(contentId, 'approve');
+      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
     }
-    function touchend(){
-
-    };
-
-
-// // on click event decline
-// document.getElementById('decline').addEventListener('click', (event) => {
-//   const activeSlide = document.querySelector('.active-slide');
-//   const contentId = activeSlide.dataset["id"];
-//   const contentTitle = activeSlide.dataset["contentTitle"];
-//   const contactId = document.getElementById('users-ids').dataset['contactId'];
-//   createUserContent(contentId, 'decline');
-//   checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
-// });
-
-//   // on click approve then what?
-// document.getElementById('approve').addEventListener('click', (event) => {
-//   const activeSlide = document.querySelector('.active-slide');
-//   const contentId = activeSlide.dataset["id"];
-//   const contentTitle = activeSlide.dataset["contentTitle"];
-//   const contactId = document.getElementById('users-ids').dataset['contactId'];
-//   createUserContent(contentId, 'approve');
-//   checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
-// });
+  x1 = null;
+  y1 = null;
+  }
+}
 
 const createUserContent = ((contentId, action) => {
   const currentUserId = document.getElementById('users-ids').dataset['currentUserId'];

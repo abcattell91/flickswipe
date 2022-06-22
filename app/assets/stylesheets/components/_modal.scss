@@ -15,21 +15,17 @@
 .movie-modal.active{
   transform: translate(-50%, -50%) scale(1);
 }
-.header {
+.movie-modal-header {
   padding: 8px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(182, 182, 182);
-  position: absolute;
-  bottom: 18%;
 }
 
-.rating {
+.movie-rating {
   font-size: 1.25rem;
   font-weight: bold;
-  position: absolute;
-  bottom: 18%;
 }
 
 .close-button {
@@ -41,11 +37,9 @@
   font-weight: bold;
 }
 
-.body {
+.movie-modal-body {
   padding: 16px;
   color: rgb(160, 160, 160);
-  position: absolute;
-  bottom: 18%;
 }
 
 .overlay {
@@ -75,17 +69,4 @@
   color: #ffffffba;
   top: 0%;
   padding: 8px;
-}
-
-.data-container {
-  position: relative;
-  bottom: -100%;
-  color: black;
-  padding: 16px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin: 16px;
-  border-radius: 10px;
-  z-index: 10;
-  background-color: rgba(255, 255, 255, 0.653);
-  color: black;
 }
