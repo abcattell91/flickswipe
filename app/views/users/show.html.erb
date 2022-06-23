@@ -1,13 +1,12 @@
-
-
-
-
 <div class="user-dashboard">
+  <h1 class="flickr-heading">Your Flickrs</h1>
+  <hr>
   <% if current_user.photo.key.present? %>
-    <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
-  <% else %>
-    <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
-  <% end %>
+      <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+      <h2 class="user-name"><%= current_user.first_name %></h2>
+      <% else %>
+        <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
+      <% end %>
 
   <%# current_user.first_name.capitalize %>
   <%# <hr>
@@ -16,17 +15,31 @@
 <%# <h2 class="current-friends"> %>
 <%# current_user.first_name.capitalize %>
 <%# </h2> %>
+  <%= form_tag user_path(id: current_user), method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a flickr"
+    %>
+    <%= submit_tag "Search", class: "btn btn-pink" %>
+  <% end %>
 <div class="friendship">
   <% @friendships_data.each do |data| %>
+
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
       <% if data[:user_photo_key].present?%>
+      <div class="users">
         <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
       <% else %>
         <%= image_tag 'Avatar.jpg', :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
       <% end %>
-      <%# <div class="users"> %>
-        <%# data[:user_first_name] %>
-      <%# </div> %>
+
+        <div class="user-first">
+          <%= data[:user_first_name] %>
+        </div>
+      </div>
+      <hr class="user-hr">
     <% end %>
   <% end %>
+  <%= link_to "Back", users_path, class: "btn btn-pink" %>
 </div>
