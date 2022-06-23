@@ -1,4 +1,3 @@
-<% @friendships.each do |friendship| %>
- <%= friendship.contact_id %>
- <%= friendship.initiator_id %>
+<% @friendships_data.each do |data| %>
+  <%= link_to "matched content with friendship", user_friendship_path(data[:current_user_friend], data[:friendship_id])  %>
 <% end %>
