@@ -15,14 +15,18 @@
 <%# <h2 class="current-friends"> %>
 <%# current_user.first_name.capitalize %>
 <%# </h2> %>
-  <%= form_tag user_path(id: current_user), method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a flickr"
-    %>
-    <%= submit_tag "Search", class: "btn btn-pink" %>
-  <% end %>
+  <div class="search-bar">
+    <%= form_tag user_path(id: current_user), method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a flickr"
+      %>
+    </div>
+      <div class="search-button">
+      <%= submit_tag "Search", class: "btn btn-pink" %>
+    <% end %>
+    </div>
 <div class="friendship">
   <% @friendships_data.each do |data| %>
 
