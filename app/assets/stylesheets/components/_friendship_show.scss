@@ -13,6 +13,8 @@
   margin: 16px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 16px;
+  display: grid;
+  justify-content: left;
 }
 
 .friendship a {
@@ -30,4 +32,43 @@
 
 .user-dashboard {
   padding: 16px;
+}
+
+.btn-pink {
+  padding: 6px;
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+  color: white !important;
+  border: solid 1px #ffffff !important;
+}
+
+.user-name {
+  position: absolute;
+  top: 155px;
+  left: 85px;
+}
+
+.flickr-heading {
+text-align: center;
+font-weight: bold;
+}
+
+.users {
+  display: inline-block;
+  font-size: 20px;
+  color: #C90A6D;
+  position: relative;
+}
+
+.user-first  {
+  position: absolute;
+  top: 0%;
+  left: 102%;
+  font-weight: bold;
+  font-size: 19px
+}
+
+.user-hr {
+  color: #C90A6D;
+  width: 295%;
+  margin: 1px;
 }

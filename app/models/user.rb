@@ -7,4 +7,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  include PgSearch::Model
+  pg_search_scope :search_by_first_name,
+    against: [ :first_name ],
+    using: {
+      tsearch: { prefix: true }
+  }
 end
