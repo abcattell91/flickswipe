@@ -3,6 +3,14 @@ class FriendshipsController < ApplicationController
   def index
     # showing specific friendships
     @friendships = Friendship.where(initiator: current_user)
+
+    @friendships = Friendship.where(initiator: current_user)
+    @friendships_data = @friendships.map do |friendship|
+      { user_photo_key: User.find(friendship.contact_id).photo.key,
+        friendship_id: friendship.id,
+        current_user_friend: User.find(friendship.contact_id),
+        user_first_name: User.find(friendship.contact_id).first_name }
+    end
   end
 
   def show
@@ -14,7 +22,7 @@ class FriendshipsController < ApplicationController
         friendship_id: friendship.id,
         current_user_friend: User.find(friendship.contact_id),
         user_first_name: User.find(friendship.contact_id).first_name }
-      end
+    end
 
     current_user_liked_true = UserContent.where(user_id: current_user, liked: true)
     friendship_liked_true = UserContent.where(user_id: @friendship.contact_id, liked: true)
