@@ -43,7 +43,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 
 
 .wrapper {
-  width: 402px;
+  width: 100%;
   height: 610px;
   background: #FDFEFF;
 	transition: background .6s ease;
@@ -66,9 +66,8 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 		}
 
 		.check {
-      position: absolute;
-      right: 5em;
-      bottom: 23.69em;
+      margin-bottom: 4px;
+      margin-left: 2px;
 			i {
 				color: #fff;
 				width: 20px;
@@ -95,6 +94,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			font-size: 24px;
 			font-weight: 600;
 			text-align: center;
+      margin: 0;
 		}
 
 		.title {
@@ -227,4 +227,14 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   border: none;
   height: 2px;
   background: #dddddd
+}
+
+.user-header p{
+  color: #33d9b2;
+  font-size: 8px;
+  font-weight: 300;
+  text-align: left;
+  position: absolute;
+  top: 79px;
+  left: 100px;
 }
