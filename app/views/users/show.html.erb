@@ -21,7 +21,9 @@
       class: "form-control",
       placeholder: "Find a flickr"
     %>
-    <%= submit_tag "Search", class: "btn btn-pink" %>
+
+    <button class="btn btn-pink" type="submit"><i class="fa fa-search"></i></button>
+
   <% end %>
 <div class="friendship">
   <% @friendships_data.each do |data| %>
