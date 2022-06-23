@@ -214,12 +214,29 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   padding-left: 176px;
 }
 
+.user-header {
+  display: flex;
+  // gap: 25px;
+  position: absolute;
+  justify-content: space-evenly;
+}
+
+.div-item {
+  height: 40px;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+
 .user-header h1{
    color: #2D354A;
    font-size: 24px;
    font-weight: 600;
    text-align: left;
-   position: relative;
    top: 10px;
 }
 
@@ -234,7 +251,6 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   font-size: 8px;
   font-weight: 300;
   text-align: left;
-  position: absolute;
   top: 79px;
   left: 100px;
 }

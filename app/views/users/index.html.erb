@@ -1,11 +1,22 @@
 
 <div class="wrapper">
 
-<div class="user-header">
-   <h1><%= current_user.first_name %></h1><p>Active now!</p>
-     <div class="blob green"></div>
-   <hr>
-</div>
+
+   <div class="user-header">
+    <%# <div class = "div-item">
+      <h1><%= current_user.first_name %>
+      <%# </h1> %>
+    <%# </div> %>
+    <div class = "div-item">
+      <div class="blob green"></div>
+     </div>
+    <div class = "div-item">
+      <p class="active-now">Active now!</p>
+    </div>
+    <hr>
+  </div>
+
+
 	<div class="profile">
     <div class="thumbnail">
       <% if current_user.photo.key.present? %>
