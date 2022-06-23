@@ -1,11 +1,11 @@
 <% @friendship_data.each do |data| %>
-<h1>Viewing Matched Content with <%= data[:user_first_name] %></h1>
+<div class="matched-index">
+<h1>Matched Content</h1>
 <% end %>
-<br><br><br>
 <% if @matched.empty? %>
-  <div class="friendship">
   <% @friendship_data.each do |data| %>
   <h1>You havent matched yet. Get swiping with <%= data[:user_first_name] %> below!</h1>
+
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
       <% if data[:user_photo_key].present?%>
         <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
@@ -14,17 +14,20 @@
       <% end %>
     <% end %>
   <% end %>
-</div>
-  <% else %>
 
-    <% @matched.each do |match| %>
+  <% else %>
+  <div class="matched-wrapper">
+  <% @matched.each do |match| %>
+  <div class="matched-container">
     <%= link_to user_friendship_content_path(current_user, @friendship.id, match.id) do %>
-    <div class="content-container">
-      <img src="<%= match.poster %>" alt="">
+        <img src="<%= match.poster %>" alt="">
       </div>
-    <% end %>
-      <div class="content-rating">
-        <%= image_tag 'tmdb-icon.svg', class: "tmdb-img" %> <p><%= match.rating %></p>
-      </div>
-    <% end %>
   <% end %>
+  <%# <div class="matched-content-rating"> %>
+    <%# image_tag 'tmdb-icon.svg', class: "match-tmdb-img" %> <p><%# match.rating %></p>
+  <%# </div> %>
+  <% end %>
+<% end %>
+</div>
+</div>
+</div>

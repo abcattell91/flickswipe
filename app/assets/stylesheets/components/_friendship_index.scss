@@ -13,5 +13,12 @@
 .avatar-container {
   width: 100px;
   margin: 8px;
-
+}
+.avatar-wrapper a {
+  text-decoration: none;
+  color: black;
+}
+.avatar-wrapper a:hover {
+    text-decoration: none;
+    color: black;
 }
