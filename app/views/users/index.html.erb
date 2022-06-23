@@ -1,8 +1,10 @@
 
+
 <div class="wrapper">
 
 <div class="user-header">
-   <h1><%= current_user.first_name %></h1>
+   <h1><%= current_user.first_name %></h1><p>Active now!</p>
+     <div class="blob green"></div>
    <hr>
 </div>
 	<div class="profile">
@@ -13,8 +15,10 @@
       <%= image_tag 'Avatar.jpg', class: "thumbnail" %>
       <% end %>
     </div>
-		<div class="check"><i class="fas fa-check"></i></div>
-		<h3 class="name"><%= "#{current_user.first_name} #{current_user.last_name} " %></h3>
+		<div class="div d-flex justify-content-center align-items-center">
+		  <h3 class="name"><%= "#{current_user.first_name} #{current_user.last_name} " %></h3>
+      <div class="check"><i class="fas fa-check"></i></div>
+    </div>
 		<p class="title">Certified Flickswiper</p>
 		<p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
 
