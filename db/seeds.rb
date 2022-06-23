@@ -1254,9 +1254,9 @@ puts " "
 
 movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API_KEY']+'&language=en-US'
 # movie_url = 'https://api.themoviedb.org/3/movie/popular?api_key='+ENV['API_KEY']+'&language=en-US'
-# movie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=bee3f4d040e52ad1c0e3eac80d78e941&language=en-US'
+# movie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key='+ENV['API_KEY']+'&language=en-US'
 
-3.times do |m|
+4.times do |m|
   contents = JSON.parse(URI.open("#{movie_url}&page=#{m + 1}").read)['results']
 
   contents.each do |content|
@@ -1344,7 +1344,7 @@ puts " "
 puts " "
 
 tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']+'&language=en-US'
-2.times do |m|
+3.times do |m|
   contents = JSON.parse(URI.open("#{tv_url}&page=#{m + 1}").read)['results']
   contents.each do |content|
     base_poster_url = 'https://image.tmdb.org/t/p/w342'
