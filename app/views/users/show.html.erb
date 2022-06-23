@@ -1,5 +1,5 @@
 <div class="user-dashboard">
-  <h1 class="flickr-heading">Your Flickswipers</h1>
+  <h1 class="flickr-heading">Your Flickswipers!</h1>
   <hr>
   <% if current_user.photo.key.present? %>
       <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
