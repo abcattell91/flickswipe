@@ -1265,7 +1265,7 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
     # if content['release_date'].to_i < 2022
 
     base_poster_url = 'https://image.tmdb.org/t/p/w342'
-    base_youtube_url = 'https://www.youtube.com/watch?v='
+    base_youtube_url = 'https://www.youtube.com/embed/'
     data = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/#{content['id']}?api_key="+ENV['API_KEY']+"&language=en-US").read)
     results = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/#{content['id']}/watch/providers?api_key="+ENV['API_KEY']+"&language=en-US&watch_region=GB").read)['results']
     videos = JSON.parse(URI.open("http://api.themoviedb.org/3/movie/#{content['id']}/videos?api_key="+ENV['API_KEY']).read)['results']
@@ -1352,7 +1352,7 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']
   contents = JSON.parse(URI.open("#{tv_url}&page=#{m + 1}").read)['results']
   contents.each do |content|
     base_poster_url = 'https://image.tmdb.org/t/p/w342'
-    base_youtube_url = 'https://www.youtube.com/watch?v='
+    base_youtube_url = 'https://www.youtube.com/embed/'
     data = JSON.parse(URI.open("https://api.themoviedb.org/3/tv/#{content['id']}?api_key="+ENV['API_KEY']+"&language=en-US").read)
     results = JSON.parse(URI.open("https://api.themoviedb.org/3/tv/#{content['id']}/watch/providers?api_key="+ENV['API_KEY']+"&language=en-US&watch_region=GB").read)['results']
     videos = JSON.parse(URI.open("http://api.themoviedb.org/3/tv/#{content['id']}/videos?api_key="+ENV['API_KEY']).read)['results']
