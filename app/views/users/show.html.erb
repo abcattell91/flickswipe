@@ -33,8 +33,9 @@
 </div>
 
 <div class="friendship">
+ <h1> <%= "Oops, User does not exist!" if @friendships_data.empty? %> </h1>
+ <%= link_to "Return", user_path(id: current_user), class: "btn btn-pink" if @friendships_data.empty? %>
   <% @friendships_data.each do |data| %>
-
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
       <% if data[:user_photo_key].present?%>
       <div class="users">

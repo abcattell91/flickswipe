@@ -13,10 +13,12 @@ class UsersController < ApplicationController
     if params[:query].present?
       @friendships_data = @friendships_data.map do |search_result|
         if params[:query].downcase == search_result[:user_first_name].downcase
-        { user_photo_key: User.find(search_result[:current_user_friend].id).photo.key,
-          friendship_id: search_result[:friendship_id],
-          current_user_friend: User.find(search_result[:current_user_friend].id),
-          user_first_name: User.find(search_result[:current_user_friend].id).first_name }
+          {
+            user_photo_key: User.find(search_result[:current_user_friend].id).photo.key,
+            friendship_id: search_result[:friendship_id],
+            current_user_friend: User.find(search_result[:current_user_friend].id),
+            user_first_name: User.find(search_result[:current_user_friend].id).first_name
+          }
         end
       end.compact
     end
