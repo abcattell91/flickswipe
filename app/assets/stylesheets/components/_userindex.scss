@@ -4,6 +4,21 @@
   padding-left: 89px;
 }
 
+.dropdown-menu {
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+  color: white;
+
+}
+
+.dropdown-menu.show {
+max-height: 133px;
+overflow-y: scroll;
+}
+
+.dropdown-item{
+  color: white !important;
+  font-size: 14px;
+}
 
 
 // ------------------------------------------------
