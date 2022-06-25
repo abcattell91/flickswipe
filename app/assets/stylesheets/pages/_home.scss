@@ -30,8 +30,14 @@
 .home-image {
   height: 200px;
   width: 100%;
-  margin-left: 3rem;
   display: flex;
+  justify-content: center;
+}
+.home-image img {
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  bottom: 63%;
 }
 
 .slogan {
