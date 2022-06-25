@@ -1,0 +1,6 @@
+# config/meta.yml
+
+meta_product_name: "Flickswipe"
+meta_title: "Flickswipe - never argue about what to watch again..."
+meta_description: "A swiping app. Swipe right on movies or tv shows to match with your friends and help you decide what to watch"
+meta_image: "flickswipe_logo.png" # should exist in `app/assets/images/`
