@@ -13,6 +13,9 @@
   margin: 16px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 16px;
+  display: grid;
+  justify-content: left;
+  margin-bottom: 16px;
 }
 
 .friendship a {
@@ -31,3 +34,82 @@
 .user-dashboard {
   padding: 16px;
 }
+
+.btn-pink {
+  padding: 6px;
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+  color: white !important;
+  border: solid 1px #ffffff !important;
+}
+
+.user-name {
+  position: absolute;
+  top: 155px;
+  left: 85px;
+  color: #2D354A;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+.flickr-heading {
+text-align: center;
+font-weight: bold;
+}
+
+.users {
+  display: inline-block;
+  font-size: 20px;
+  color: #C90A6D;
+  position: relative;
+}
+
+.user-first  {
+  position: absolute;
+  top: 0%;
+  left: 102%;
+  font-weight: bold;
+  font-size: 19px
+}
+
+.user-hr {
+  color: #C90A6D;
+  width: 295%;
+  margin: 1px;
+}
+
+.search-button {
+  position: absolute;
+  top: 218px;
+  right: 33px;
+}
+
+.search-bar {
+  width: 296px;
+  margin-top: 10px;
+}
+
+.btn-back {
+  padding: 6px;
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+  color: white !important;
+  border: solid 1px #ffffff !important;
+  width: 100%;
+  margin-bottom: 33px;
+}
+
+// .check-show {
+//   margin-bottom: 4px;
+//   margin-left: 2px;
+//   i {
+//     color: #fff;
+//     width: 20px;
+//     height: 20px;
+//     font-size: 12px;
+//     line-height: 20px;
+//     text-align: center;
+//     border-radius: 100%;
+//     background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
+//   }
+// }

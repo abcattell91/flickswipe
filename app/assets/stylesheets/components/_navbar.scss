@@ -1,12 +1,60 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  // background: white;
+  background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  color: white;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
 }
+
+.navbar-toggler-icon .navbar-collapse {
+  color: red;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:white;
+}
+
+.navbar-light .navbar-toggler {
+  color: white;
+  // border-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+// display: flex;
+// flex-direction: row;
+color: white;
+font-size: 14px !important;
+font-weight: 300;
+text-align: center;
+padding-top: 0.5em;
+padding-bottom: 0.7em;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+}
+
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+}
+
+
+
+// .navbar-nav .nav-link {
+// padding-right: 0;
+// padding-left: 0;
+// display: flex;
+// justify-content: space-evenly;
+// align-items: center;
+// // flex-wrap: nowrap;
+// flex-direction: row
+// }

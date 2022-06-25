@@ -1,61 +1,82 @@
-// potential ability to swipe implemented below
-
-// document.getElementById('swipe').addEventListener('touchstart', (touchstart))
-// document.getElementById('swipe').addEventListener('touchmove', (touchmove))
-// document.getElementById('swipe').addEventListener('touchend', (touchend))
-//     function touchstart(ev){
-//       startingX = ev.touches[0].clientX;
-//     }
-//     function touchmove(ev){
-//       movingX = ev.touches[0].clientX;
-//     }
-//     function touchend(ev){
-//       if (startingX +200 < movingX){
-//         console.log('swiperight');
-//         const activeSlide = document.querySelector('.active-slide');
-//         const contentId = activeSlide.dataset["id"];
-//         const contentTitle = activeSlide.dataset["contentTitle"];
-//         const contactId = document.getElementById('users-ids').dataset['contactId'];
-//         createUserContent(contentId, 'decline');
-//         checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
-//       } else if (startingX -200 > movingX){
-//         console.log('swipeleft');
-//         const activeSlide = document.querySelector('.active-slide');
-//         const contentId = activeSlide.dataset["id"];
-//         const contentTitle = activeSlide.dataset["contentTitle"];
-//         const contactId = document.getElementById('users-ids').dataset['contactId'];
-//         createUserContent(contentId, 'approve');
-//         checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
-//       }
-//     };
 
 // import swal from "sweetalert";
 const Swal = require('sweetalert2')
 
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+const logBlock = document.querySelector('.close-outside')
 
 const activeSlide = document.querySelector('.slide');
 // show first slide
 activeSlide.classList.add("active-slide");
 
-// on click event decline
-document.getElementById('decline').addEventListener('click', (event) => {
-  const activeSlide = document.querySelector('.active-slide');
-  const contentId = activeSlide.dataset["id"];
-  const contentTitle = activeSlide.dataset["contentTitle"];
-  const contactId = document.getElementById('users-ids').dataset['contactId'];
-  createUserContent(contentId, 'decline');
-  checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
-});
+let timerInterval
+Swal.fire({
+  position: 'center',
+  icon: 'info',
+  title: 'Swipe LEFT to Like',
+  html: '<i class="fa fa-solid fa-thumbs-up fa-2x">',
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
 
-  // on click approve then what?
-document.getElementById('approve').addEventListener('click', (event) => {
-  const activeSlide = document.querySelector('.active-slide');
-  const contentId = activeSlide.dataset["id"];
-  const contentTitle = activeSlide.dataset["contentTitle"];
-  const contactId = document.getElementById('users-ids').dataset['contactId'];
-  createUserContent(contentId, 'approve');
-  checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
-});
+let x1 = null;
+let y1 = null;
+
+function handleTouchStart(event) {
+  const firstTouch = event.touches[0];
+  x1 = firstTouch.clientX;
+  y1 = firstTouch.clientY;
+}
+
+function handleTouchMove(event) {
+  if (!x1 || !y1) {
+    return false;
+  }
+  let x2 = event.touches[0].clientX;
+  let y2 = event.touches[0].clientY;
+  let xDiff = x2 - x1;
+  let yDiff = y2 - y1;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      console.log('right')
+      const activeSlide = document.querySelector('.active-slide');
+      const contentId = activeSlide.dataset["id"];
+      const contentTitle = activeSlide.dataset["contentTitle"];
+      const contactId = document.getElementById('users-ids').dataset['contactId'];
+      createUserContent(contentId, 'decline');
+      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
+    }
+    else {
+      console.log('left');
+      const activeSlide = document.querySelector('.active-slide');
+      const contentId = activeSlide.dataset["id"];
+      const contentTitle = activeSlide.dataset["contentTitle"];
+      const contactId = document.getElementById('users-ids').dataset['contactId'];
+      createUserContent(contentId, 'approve');
+      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
+    }
+  x1 = null;
+  y1 = null;
+  }
+}
 
 const createUserContent = ((contentId, action) => {
   const currentUserId = document.getElementById('users-ids').dataset['currentUserId'];

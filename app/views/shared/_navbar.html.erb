@@ -1,35 +1,40 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag("flickswipe_logo.png") %>
+    <%= link_to users_path, class: "navbar-brand" do %>
+      <%= image_tag("flickswipe_final.png") %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse horizontal list" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home ", users_path, class: "nav-link" %>
           </li>
+          <li>
+            |
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Edit Profile ', edit_user_registration_path, class: "nav-link"%>
+          </li>
+           <li>
+            |
+          </li>
+          <li>
+            <%= link_to "Matches", user_friendships_path(current_user), class: "nav-link"%>
+          </li>
+           <li>
+            |
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link"%>
+          </li>
+          <li>
+          <% else %>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <% if current_user.photo.key.present? %>
-              <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag 'Avatar.jpg', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to 'Edit Profile', edit_user_registration_path %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
