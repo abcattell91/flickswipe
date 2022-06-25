@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'users#index'
   devise_for :users, :path_prefix => 'd'
    resources :users, :only =>[:show, :index] do
-    resources :friendships, only: [:index, :create] do
+    resources :friendships, only: [:index, :create, :show] do
       resources :contents, only: [:index, :show] do
         resources :user_contents, only: [:create]
       end
