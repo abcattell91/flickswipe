@@ -43,7 +43,6 @@
 }
 
 .user-name {
-  position: absolute;
   top: 155px;
   left: 85px;
   color: #2D354A;
@@ -116,6 +115,8 @@ font-weight: bold;
 }
 
 .user-details {
-  position: sticky;
-  display: contents;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0 10px;
 }
