@@ -41,8 +41,9 @@
         <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Add Friends
         </button>
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <% @users.each do |user| %>
+          <% @users.order(:first_name).each do |user| %>
           <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
             <%# <%= link_to "#{user.first_name} - Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
             <% else %>
