@@ -1,13 +1,10 @@
 .footer {
+  bottom:0;
+  width:100%;
+  height:40px;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  padding: 0px 50px;
   background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  left: 0;
 }
 
 .footer-links {

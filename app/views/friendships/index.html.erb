@@ -1,4 +1,17 @@
-<% @friendships.each do |friendship| %>
- <%= friendship.contact_id %>
- <%= friendship.initiator_id %>
-<% end %>
+<div class="friendship-index">
+<h1>View Matched Content with Friends</h1>
+<div class="avatar-wrapper">
+  <% @friendships_data.each do |data| %>
+  <div class="avatar-container">
+    <%= link_to user_friendship_path(current_user, data[:friendship_id] ) do %>
+      <% if data[:user_photo_key].present?%>
+        <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
+      <% else %>
+        <%= image_tag 'Avatar.jpg', :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
+      <% end %>
+      <%= data[:user_first_name] %>
+      <% end %>
+      </div>
+  <% end %>
+  </div>
+  </div>

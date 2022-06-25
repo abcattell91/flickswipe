@@ -1,0 +1,33 @@
+.matched-container img {
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: rgba(165, 165, 165, 0.143) 0px 25px 50px -12px;
+  width: 100%
+}
+
+.match-tmdb-img {
+  width: 12%;
+}
+.matched-content-rating {
+  border-radius: 32px;
+  text-align: center;
+  padding-top: 16px;
+  font-size: 24px;
+}
+.matched-container {
+  width: 33%;
+  padding: 8px;
+}
+.matched-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.matched-index {
+  text-align: center;
+  padding: 8px;
+  padding-top: 16px;
+  margin: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 16px;
+}
