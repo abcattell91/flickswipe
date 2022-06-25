@@ -9,7 +9,7 @@
               <div class="movie-rating" style=""><%= image_tag 'tmdb-icon.svg', class: "modal-tmdb-img" %><strong> <%= content.rating.round(1) %></strong></div>
               <button class="close-button">&times;</button>
             </div>
-            <div class="movie-modal-body"><iframe src="<%= content.trailer %>" frameborder="0"></iframe></div>
+            <div class="movie-modal-body"><p><%= content.description %></p></div>
           </div>
           <div class="overlay <%= content.id %>"></div>
       </li>
