@@ -80,7 +80,11 @@ font-weight: bold;
 }
 
 .search-button {
-
+  align-items: stretch;
+  display: flex;
+  justify-items: flex-end;
+  align-content: flex-start;
+  justify-content: flex-end;
 }
 
 .search-bar {
@@ -119,5 +123,5 @@ font-weight: bold;
 }
 
 .search {
-  align-items: center;
+  display: inline-flex;
 }
