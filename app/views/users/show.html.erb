@@ -1,14 +1,15 @@
 <div class="user-dashboard">
   <h1 class="flickr-heading">Your Flickswipers!</h1>
   <hr>
-  <% if current_user.photo.key.present? %>
-      <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
-      <h2 class="user-name"><%= current_user.first_name %></h2>
-      <%# <div class="check-show"><i class="fas fa-check"></i></div> %>
-      <% else %>
-        <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
-      <% end %>
-
+  <div class="user-details">
+    <% if current_user.photo.key.present? %>
+        <%= cl_image_tag current_user.photo.key, :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-large" %>
+          <h2 class="user-name"><%= current_user.first_name %></h2>
+          <div class="check-show"><i class="fas fa-check"></i></div>
+        <% else %>
+          <%= image_tag 'Avatar.jpg', class: "avatar-large" %>
+        <% end %>
+  </div>
   <%# current_user.first_name.capitalize %>
   <%# <hr>
 </div> %>
@@ -16,18 +17,20 @@
 <%# <h2 class="current-friends"> %>
 <%# current_user.first_name.capitalize %>
 <%# </h2> %>
+<div class="search">
   <div class="search-bar">
     <%= form_tag user_path(id: current_user), method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a flickr"
+        placeholder: "Find a flickswiper!"
       %>
-    </div>
-      <div class="search-button">
+  </div>
+  <div class="search-button">
       <button class="btn btn-pink" type="submit"><i class="fa fa-search"></i></button>
     <% end %>
-    </div>
+  </div>
+</div>
 
 <div class="friendship">
   <% @friendships_data.each do |data| %>
@@ -44,8 +47,9 @@
           <%= data[:user_first_name] %>
         </div>
       </div>
-      <hr class="user-hr">
     <% end %>
   <% end %>
+  </div>
 </div>
+
   <%= link_to "Back", users_path, class: "btn btn-back" %>
