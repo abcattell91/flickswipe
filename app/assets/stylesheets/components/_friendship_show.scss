@@ -80,14 +80,11 @@ font-weight: bold;
 }
 
 .search-button {
-  position: absolute;
-  top: 218px;
-  right: 33px;
+
 }
 
 .search-bar {
   width: 296px;
-  margin-top: 10px;
 }
 
 .btn-back {
@@ -119,4 +116,8 @@ font-weight: bold;
   align-items: center;
   justify-content: flex-start;
   gap: 0 10px;
+}
+
+.search {
+  align-items: center;
 }
