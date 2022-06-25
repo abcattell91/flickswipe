@@ -1265,8 +1265,10 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
     # if content['release_date'].to_i < 2022
 
     base_poster_url = 'https://image.tmdb.org/t/p/w342'
+    base_youtube_url = 'https://www.youtube.com/embed/'
     data = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/#{content['id']}?api_key="+ENV['API_KEY']+"&language=en-US").read)
     results = JSON.parse(URI.open("https://api.themoviedb.org/3/movie/#{content['id']}/watch/providers?api_key="+ENV['API_KEY']+"&language=en-US&watch_region=GB").read)['results']
+    videos = JSON.parse(URI.open("http://api.themoviedb.org/3/movie/#{content['id']}/videos?api_key="+ENV['API_KEY']).read)['results']
 
       if results != {} && results["GB"] && results['GB']["flatrate"]  # This filters out results where no streaming services are available or the movie is too new.
 
@@ -1296,7 +1298,8 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
             content_type: content['media_type'],
             watch_providers: results.dig("GB", "flatrate")&.map { |provider| provider["provider_name"] }, # iterate through providers/streaming services
             duration: data['runtime'],
-            genres: data.dig("genres")&.map { |genre| genre["name"] } # iterate through genres services
+            genres: data.dig("genres")&.map { |genre| genre["name"] }, # iterate through genres services
+            trailer: "#{base_youtube_url}#{videos[0]["key"]}"
           )
             hash["streamingInfo"].keys.each do |key|
               info = StreamingService.find_by(provider: key)
@@ -1320,6 +1323,7 @@ movie_url = 'https://api.themoviedb.org/3/trending/movie/week?api_key='+ENV['API
       puts "RATING: #{content['vote_average']}"
       puts "CONTENT_TYPE: #{content['media_type']}"
       puts "WATCH_PROVIDERS: #{results.dig("GB", "flatrate")&.map { |provider| provider["provider_name"] }}"
+      puts "TRAILER URL CREATED"
 
       end
   end
@@ -1348,8 +1352,10 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']
   contents = JSON.parse(URI.open("#{tv_url}&page=#{m + 1}").read)['results']
   contents.each do |content|
     base_poster_url = 'https://image.tmdb.org/t/p/w342'
+    base_youtube_url = 'https://www.youtube.com/embed/'
     data = JSON.parse(URI.open("https://api.themoviedb.org/3/tv/#{content['id']}?api_key="+ENV['API_KEY']+"&language=en-US").read)
     results = JSON.parse(URI.open("https://api.themoviedb.org/3/tv/#{content['id']}/watch/providers?api_key="+ENV['API_KEY']+"&language=en-US&watch_region=GB").read)['results']
+    videos = JSON.parse(URI.open("http://api.themoviedb.org/3/tv/#{content['id']}/videos?api_key="+ENV['API_KEY']).read)['results']
 
     if results != {} && results["GB"] && results['GB']["flatrate"] # This filters out results where no streaming services are available or the tv show is too new.
 
@@ -1379,7 +1385,8 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']
             content_type: content['media_type'],
             watch_providers: results.dig("GB", "flatrate")&.map { |provider| provider["provider_name"] }, # iterate through providers/streaming services
             duration: data['episode_run_time'][0],
-            genres: data.dig("genres")&.map { |genre| genre["name"] } # iterate through genres services
+            genres: data.dig("genres")&.map { |genre| genre["name"] }, # iterate through genres services
+            trailer: "#{base_youtube_url}#{videos[0]["key"]}"
           )
           hash["streamingInfo"].keys.each do |key|
             info = StreamingService.find_by(provider: key)
@@ -1402,6 +1409,7 @@ tv_url = 'https://api.themoviedb.org/3/trending/tv/week?api_key='+ENV['API_KEY']
       puts "RATING: #{content['vote_average']}"
       puts "CONTENT_TYPE: #{content['media_type']}"
       puts "TMDB-STREAMING_PROVIDERS: #{results.dig("GB", "flatrate")&.map { |provider| provider["provider_name"] }}"
+      puts "TRAILER URL CREATED"
     end
   end
 end
