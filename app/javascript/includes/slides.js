@@ -15,7 +15,7 @@ let timerInterval
 Swal.fire({
   position: 'center',
   icon: 'info',
-  title: 'Swipe LEFT to Like',
+  title: 'Swipe Right to Like',
   html: '<i class="fa fa-solid fa-thumbs-up fa-2x">',
   timer: 3000,
   timerProgressBar: true,
@@ -56,22 +56,22 @@ function handleTouchMove(event) {
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     if (xDiff > 0) {
-      console.log('right')
-      const activeSlide = document.querySelector('.active-slide');
-      const contentId = activeSlide.dataset["id"];
-      const contentTitle = activeSlide.dataset["contentTitle"];
-      const contactId = document.getElementById('users-ids').dataset['contactId'];
-      createUserContent(contentId, 'decline');
-      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
-    }
-    else {
-      console.log('left');
+      console.log('right approve');
       const activeSlide = document.querySelector('.active-slide');
       const contentId = activeSlide.dataset["id"];
       const contentTitle = activeSlide.dataset["contentTitle"];
       const contactId = document.getElementById('users-ids').dataset['contactId'];
       createUserContent(contentId, 'approve');
       checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'approve');
+    }
+    else {
+      console.log('left decline')
+      const activeSlide = document.querySelector('.active-slide');
+      const contentId = activeSlide.dataset["id"];
+      const contentTitle = activeSlide.dataset["contentTitle"];
+      const contactId = document.getElementById('users-ids').dataset['contactId'];
+      createUserContent(contentId, 'decline');
+      checkIfMatch(contentId, contactId, contentTitle, activeSlide, 'decline');
     }
   x1 = null;
   y1 = null;

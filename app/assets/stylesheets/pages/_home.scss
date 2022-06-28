@@ -1,5 +1,6 @@
 // Specific CSS for your home-page
 
+
 .heading {
   text-align: center;
   font-family: 'Pacifico', cursive;
@@ -27,10 +28,10 @@
 }
 
 .home-image {
-  height: 200px;
+  height: 300px;
   width: 100%;
-  margin-left: 3rem;
   display: flex;
+  justify-content: center;
 }
 
 .slogan {
@@ -38,6 +39,7 @@
 }
 
 .home-title {
+  padding-top: 16px;
   text-align: center;
   border-top: solid 1px black;
 }

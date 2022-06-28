@@ -2,6 +2,27 @@
 <div class="matched-index">
 <h1>Matched Content</h1>
 <% end %>
+
+
+<div class="dropdown-show">
+  <button class="btn btn-small btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  Filter Content
+  </button>
+  <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton1">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="moviecheckbox">
+        <label class="form-check-label" for="flexCheckDefault">
+          <h3 class="text-white">Movie</h3>
+        </label>
+      </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="tvcheckbox">
+        <label class="form-check-label" for="flexCheckChecked">
+          <h3 class="text-white">TV Show</h3>
+      </label>
+    </div>
+  </ul>
+</div>
 <% if @matched.empty? %>
   <% @friendship_data.each do |data| %>
   <h1>You havent matched yet. Get swiping with <%= data[:user_first_name] %> below!</h1>
@@ -16,17 +37,28 @@
   <% end %>
 
   <% else %>
-  <div class="matched-wrapper">
-  <% @matched.each do |match| %>
-  <div class="matched-container">
-    <%= link_to user_friendship_content_path(current_user, @friendship.id, match.id) do %>
-        <img src="<%= match.poster %>" alt="">
-      </div>
-  <% end %>
-  <%# <div class="matched-content-rating"> %>
-    <%# image_tag 'tmdb-icon.svg', class: "match-tmdb-img" %> <p><%# match.rating %></p>
-  <%# </div> %>
-  <% end %>
+    <div class="matched-wrapper">
+      <% @matched.sort_by(&:rating).reverse.each do |match| %>
+        <div class="matched-container">
+          <%= link_to user_friendship_content_path(current_user, @friendship.id, match.id) do %>
+            <img src="<%= match.poster %>" alt="">
+        </div>
+      <% end %>
+    <% end %>
+      <% @movie_matches.sort_by(&:rating).reverse.each do |match| %>
+        <div class="movie-matched-container" hidden>
+          <%= link_to user_friendship_content_path(current_user, @friendship.id, match.id) do %>
+            <img src="<%= match.poster %>" alt="">
+        </div>
+      <% end %>
+    <% end %>
+    <% @tvshow_matches.sort_by(&:rating).reverse.each do |match| %>
+      <div class="tv-matched-container" hidden>
+        <%= link_to user_friendship_content_path(current_user, @friendship.id, match.id) do %>
+          <img src="<%= match.poster %>" alt="">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
-</div>
 </div>

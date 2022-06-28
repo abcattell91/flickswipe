@@ -1,23 +1,13 @@
-
-
 <div class="wrapper">
-
-
    <div class="user-header">
-    <%# <div class = "div-item">
-      <h1><%= current_user.first_name %>
-      <%# </h1> %>
-    <%# </div> %>
     <div class = "div-item">
       <div class="blob green"></div>
      </div>
     <div class = "div-item">
       <p class="active-now">Active now!</p>
     </div>
-    <hr>
+     <hr>
   </div>
-
-
 	<div class="profile">
     <div class="thumbnail">
       <% if current_user.photo.key.present? %>
@@ -31,25 +21,27 @@
       <div class="check"><i class="fas fa-check"></i></div>
     </div>
 		<p class="title">Certified Flickswiper</p>
-		<p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aliquam aliquid porro!</p>
+		<p class="description">I'm <%= current_user.first_name %> and I have an obsession for movies, add me so we can flickswipe!</p>
 
     <div class="button-box1">
         <%= link_to "View Friends", user_path(id: current_user), class: "btn"%>
     </div>
-        <div class="dropdown">
+    <div class="dropdown">
       <div class="button-box">
         <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Add Friends
         </button>
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <% @users.each do |user| %>
+          <% @users.order(:first_name).each do |user| %>
           <% if @friendships.select { |friendship| friendship.contact == user}.length > 0 %>
-            <%= link_to "#{user.first_name} Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
+            <%# <%= link_to "#{user.first_name} - Added!", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
             <% else %>
             <%= link_to "#{user.first_name} - add Friend", user_friendships_path(user_id: @user.id, initiator_id: @user.id, contact_id: user.id) , class: "dropdown-item", method: :post %>
             <% end %>
           <% end %>
         </div>
+      </div>
     </div>
 	</div>
 

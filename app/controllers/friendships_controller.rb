@@ -35,8 +35,8 @@ class FriendshipsController < ApplicationController
 
     @matched = Content.where(id: match_id)
 
-    # @matched.filter_by_content(params[:content_type])
-    # @matched.filter_by_rating(params[:rating])
+    @movie_matches = @matched.filter_by_content_movie
+    @tvshow_matches = @matched.filter_by_content_tvshow
     # @matched.filter_by_duration(params[:duration])
 
   end
