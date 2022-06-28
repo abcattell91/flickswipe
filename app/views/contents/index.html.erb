@@ -6,7 +6,7 @@
         <button class="modal-btn"><i class='fas fa-info-circle fa-3x'></i></button>
           <div class="movie-modal <%= content.id %>">
             <div class="movie-modal-header">
-              <div class="movie-rating" style=""><%= image_tag 'tmdb-icon.svg', class: "modal-tmdb-img" %><strong> <%= content.rating %></strong></div>
+              <div class="movie-rating" style=""><%= image_tag 'tmdb-icon.svg', class: "modal-tmdb-img" %><strong> <%= content.rating.round(1) %></strong></div>
               <button class="close-button">&times;</button>
             </div>
             <div class="movie-modal-body"><p><%= content.description %></p></div>

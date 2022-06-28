@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @users = User.where.not(id: current_user.id)
     @friendships = Friendship.where(initiator: current_user)
+
     # @users = User.where(first_name: params[:query])
   end
 end
