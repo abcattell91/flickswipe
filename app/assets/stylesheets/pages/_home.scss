@@ -28,16 +28,10 @@
 }
 
 .home-image {
-  height: 200px;
+  height: 300px;
   width: 100%;
   display: flex;
   justify-content: center;
-}
-.home-image img {
-  height: 350px;
-  width: 350px;
-  position: absolute;
-  bottom: 63%;
 }
 
 .slogan {
@@ -45,6 +39,7 @@
 }
 
 .home-title {
+  padding-top: 16px;
   text-align: center;
   border-top: solid 1px black;
 }
