@@ -8,6 +8,7 @@
     </div>
      <hr>
   </div>
+
 	<div class="profile">
     <div class="thumbnail">
       <% if current_user.photo.key.present? %>
@@ -21,7 +22,7 @@
       <div class="check"><i class="fas fa-check"></i></div>
     </div>
 		<p class="title">Certified Flickswiper</p>
-		<p class="description">I'm <%= current_user.first_name %> and I have an obsession for movies, add me so we can flickswipe!</p>
+		<p class="description">Select <strong>Add friends</strong> below so you can add your friend to start flickswiping! or select <strong>View Friends</strong> to flickswipe! with your existing Friends.</p>
 
     <div class="button-box1">
         <%= link_to "View Friends", user_path(id: current_user), class: "btn"%>

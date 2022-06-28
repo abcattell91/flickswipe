@@ -133,7 +133,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 
 		.description {
 			color: #080911;
-			font-size: 14px;
+			font-size: 12px;
 			font-weight: 300;
 			text-align: center;
 			margin-bottom: 1.3em;
@@ -276,4 +276,8 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   text-align: left;
   top: 79px;
   left: 100px;
+}
+
+.description strong {
+  color: #C90A6D;
 }
