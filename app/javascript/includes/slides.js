@@ -1,5 +1,6 @@
 
 // import swal from "sweetalert";
+const { end } = require('@popperjs/core');
 const Swal = require('sweetalert2')
 
 document.addEventListener('touchstart', handleTouchStart, false);
@@ -12,6 +13,7 @@ const activeSlide = document.querySelector('.slide');
 activeSlide.classList.add("active-slide");
 
 let timerInterval
+if(activeSlide)
 Swal.fire({
   position: 'center',
   icon: 'info',
@@ -57,6 +59,26 @@ function handleTouchMove(event) {
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     if (xDiff > 0) {
       console.log('right approve');
+      let timerInterval1
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        customClass: {
+          popup: 'my-swal',
+        },
+        iconColor: '#66ff00',
+        timer: 900,
+        didOpen: () => {
+          Swal.showLoading()
+          const load = Swal.getHtmlContainer().querySelector('load')
+          timerInterval1 = setInterval(() => {
+            load.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval1)
+        }
+      });
       const activeSlide = document.querySelector('.active-slide');
       const contentId = activeSlide.dataset["id"];
       const contentTitle = activeSlide.dataset["contentTitle"];
@@ -66,6 +88,26 @@ function handleTouchMove(event) {
     }
     else {
       console.log('left decline')
+      let timerInterval2
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        customClass: {
+          popup: 'my-swal'
+        },
+        iconColor: '#EE4B2B',
+        timer: 900,
+        didOpen: () => {
+          Swal.showLoading()
+          const load2 = Swal.getHtmlContainer().querySelector('b')
+          timerInterval2 = setInterval(() => {
+            load2.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval2)
+        }
+      });
       const activeSlide = document.querySelector('.active-slide');
       const contentId = activeSlide.dataset["id"];
       const contentTitle = activeSlide.dataset["contentTitle"];
@@ -133,9 +175,7 @@ const checkIfMatch = ((contentId, contactId, contentTitle, activeSlide, action) 
       goToSlide(activeSlide);
     }
   })
-
 })
-
 const goToSlide = ((activeSlide) => {
   activeSlide.classList.remove("active-slide");
   const nextActiveSlide = activeSlide.nextElementSibling;
