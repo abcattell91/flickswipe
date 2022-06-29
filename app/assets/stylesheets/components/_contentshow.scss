@@ -50,6 +50,7 @@
 .provider {
   text-align: center;
   padding: 16px;
+  margin-bottom: 56px;
 }
 .provider img {
   border-radius: 32px;
@@ -78,5 +79,5 @@ iframe {
   width:100%;
   border-radius: 32px;
   height: 250px;
-
+  z-index: 15;
 }
