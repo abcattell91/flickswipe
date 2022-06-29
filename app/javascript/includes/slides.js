@@ -16,7 +16,7 @@ let timerInterval
 if(activeSlide)
 Swal.fire({
   position: 'center',
-  icon: 'info',
+  htmlicon: 'info',
   title: 'Swipe Right to Like',
   html: '<i class="fa fa-solid fa-thumbs-up fa-2x">',
   timer: 3000,
@@ -62,7 +62,7 @@ function handleTouchMove(event) {
       let timerInterval1
       Swal.fire({
         position: 'center',
-        icon: 'success',
+        title: '<i class="thumbslideup fa fa-solid fa-thumbs-up">',
         customClass: {
           popup: 'my-swal',
         },
@@ -91,11 +91,10 @@ function handleTouchMove(event) {
       let timerInterval2
       Swal.fire({
         position: 'center',
-        icon: 'error',
+        title: '<i class="thumbslidedown fa fa-solid fa-thumbs-down">',
         customClass: {
-          popup: 'my-swal'
+          popup: 'my-swal',
         },
-        iconColor: '#EE4B2B',
         timer: 900,
         didOpen: () => {
           Swal.showLoading()
