@@ -11,7 +11,7 @@ activeSlide.classList.add("active-slide");
 
 let timerInterval4
 
-if(document.querySelector('.active-slide')) {
+
   document.addEventListener('touchstart', handleTouchStart, false);
   document.addEventListener('touchmove', handleTouchMove, false);
 
@@ -170,4 +170,3 @@ if(document.querySelector('.active-slide')) {
     const nextActiveSlide = activeSlide.nextElementSibling;
     nextActiveSlide.classList.add("active-slide");
   });
-};
