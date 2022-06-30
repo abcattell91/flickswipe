@@ -1,5 +1,7 @@
 {
- "name": "App",
+  "name": "Flickswipe",
+  "display": "fullscreen",
+  "description": "Swipe on with friends on movies/tv show until you match. A quick decision maker on what to watch!",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
