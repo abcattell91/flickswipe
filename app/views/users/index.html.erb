@@ -48,20 +48,20 @@
 
 	<div class="social-icons">
 		<div class="icon">
-			<a href="/"><i class="fab fa-dribbble"></i></a>
-			<h4>12.8k</h4>
-			<p>Followers</p>
+			<a href="/"><i class="fa fa-solid fa-heart"></i></a>
+			<h4><%= @likes.count %></h4>
+      <p>Liked movies</p>
 		</div>
 
 		<div class="icon">
-			<a href="#"><i class="fab fa-behance"></i></a>
-			<h4>12.8k</h4>
-			<p>Followers</p>
+			<a href="#"><i class="fa fa-solid fa-users"></i></a>
+			<h4><%= @friendships.count %></h4>
+			<p>Flickswipers!</p>
 		</div>
 
 		<div class="icon">
 			<a href="#"><i class="fab fa-twitter"></i></a>
-			<h4>12.8k</h4>
+			<h4><%= @friendships.count %></h4>
 			<p>Followers</p>
 		</div>
 	</div>

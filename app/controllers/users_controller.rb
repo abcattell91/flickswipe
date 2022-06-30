@@ -30,5 +30,6 @@ class UsersController < ApplicationController
     @friendships = Friendship.where(initiator: current_user)
 
     # @users = User.where(first_name: params[:query])
+    @likes = UserContent.where(user_id: current_user, liked: true)
   end
 end
