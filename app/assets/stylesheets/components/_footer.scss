@@ -6,7 +6,7 @@
   justify-content: center;
   background: linear-gradient(to bottom right, #C90A6D, #FF48A0);
   position: fixed;
-  display: block;
+  z-index: 1000;
 }
 
 .footer-links {
