@@ -6,7 +6,7 @@
 <%# Content body below %>
 <div class="content-body">
   <div class="content-rating">
-    <%= image_tag 'tmdb-icon.svg', class: "tmdb-img" %> <p><%= @content.rating %></p>
+    <%= image_tag 'tmdb-icon.svg', class: "tmdb-img" %> <p><%= @content.rating.round(1) %></p>
   </div>
   <div class="content-runtime">
     Runtime: <%= @content.duration %> mins
@@ -24,9 +24,11 @@
     <p><%= @content.description %></p>
   </div>
 </div>
-
 <div class="content-body">
-<p class="provider-text">Click below to start watching</p>
+  <iframe src="<%= @content.trailer %>" frameborder="0"></iframe>
+</div>
+<div class="content-body">
+  <p class="provider-text">Click Icon below to start watching</p>
 </div>
 
 <div class="content-providers">
