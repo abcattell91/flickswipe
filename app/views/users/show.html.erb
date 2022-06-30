@@ -37,13 +37,12 @@
  <%= link_to "Return", user_path(id: current_user), class: "btn btn-pink" if @friendships_data.empty? %>
   <% @friendships_data.each do |data| %>
     <%= link_to user_friendship_contents_path(data[:current_user_friend], data[:friendship_id] ) do %>
-      <% if data[:user_photo_key].present?%>
       <div class="users">
-        <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
-      <% else %>
-        <%= image_tag 'Avatar.jpg', :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend" %>
-      <% end %>
-
+        <% if data[:user_photo_key].present?%>
+          <%= cl_image_tag data[:user_photo_key], :transformation=>[{:aspect_ratio=>"1.0", :gravity=>"face", :width=>0.6, :zoom=>0.7, :crop=>"thumb"},{:radius=>"max"}], class: "avatar-friend"  %>
+        <% else %>
+          <%= image_tag 'Avatar.jpg', class: "avatar-friend" %>
+        <% end %>
         <div class="user-first">
           <%= data[:user_first_name] %>
         </div>
