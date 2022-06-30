@@ -7,6 +7,7 @@ const logBlock = document.querySelector('.close-outside')
 
 const activeSlide = document.querySelector('.slide');
 // show first slide
+if (activeSlide) {
 activeSlide.classList.add("active-slide");
 
 let timerInterval4
@@ -170,3 +171,4 @@ let timerInterval4
     const nextActiveSlide = activeSlide.nextElementSibling;
     nextActiveSlide.classList.add("active-slide");
   });
+}
