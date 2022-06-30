@@ -4,16 +4,14 @@ const { end } = require('@popperjs/core');
 const Swal = require('sweetalert2')
 
 const logBlock = document.querySelector('.close-outside')
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
 
 const activeSlide = document.querySelector('.slide');
 // show first slide
 activeSlide.classList.add("active-slide");
 
 let timerInterval4
-
-
-  document.addEventListener('touchstart', handleTouchStart, false);
-  document.addEventListener('touchmove', handleTouchMove, false);
 
   Swal.fire({
     position: 'center',
