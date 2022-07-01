@@ -44,7 +44,7 @@
 .image-carousel img {
   background-size: cover;
   background-position: center;
-  height: 87%;
+  min-height: 87% !important;
   width: 100vw;
   object-fit: cover;
 }
