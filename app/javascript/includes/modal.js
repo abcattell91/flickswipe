@@ -11,11 +11,6 @@ const overlayClose = document.querySelectorAll(".overlay");
 // then you can add the active or remove class to each one.
 modalBtn.forEach(function(btn, index){
   btn.addEventListener('click', function() {
-    document.addEventListener("touch", handler, true);
-    function handler(e) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
     modalBg.forEach(function(item){
       item.classList.add('active');
     });
