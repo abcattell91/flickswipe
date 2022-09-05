@@ -1,5 +1,7 @@
 # Flickswipe
 
+<img src="./app/assets/images/Untitled ‑ Made with FlexClip.gif" alt="My Project GIF" width="1000" height="600">
+
 This is a mobile web app that allows you to swipe and match movies/tv shows together with your friends.
 When you match a movie you both 'like' it will tell you where to watch it!
 
